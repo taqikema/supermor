@@ -1,0 +1,62 @@
+SUPERMOR paper release: environment information to complete
+=========================================================
+
+Status
+------
+This is a packaging checklist, not a tested environment lock. No scientific
+software has been installed or simulated while creating this scaffold.
+The repository's historical custEM/yaml.yml must not be presented as the
+verified environment used for the current paper without checking it.
+
+Numerical environment
+---------------------
+Record the actual OS, Python, compiler and MPI versions from the environment
+used to validate the release. The existing solver uses legacy FEniCS/DOLFIN,
+not DOLFINx. Record the DOLFIN, UFL, FFC and dijitso versions together.
+
+The environment must provide matched MPI, mpi4py, PETSc and petsc4py builds;
+PETSc must use the real-scalar configuration required by the existing block
+formulation, and provide HYPRE/AMS and MUMPS. Record their versions, integer
+width, BLAS/LAPACK backend and the installation commands or environment
+export used successfully. Preserve pyGIMLi if the packaged custEM loaders
+still import it, even when generated meshes are supplied.
+
+requirements.txt lists candidate Python dependencies only. Installing it
+alone does not install or verify the numerical stack. Lock versions from
+the tested environment, without replacing ABI-coupled packages blindly.
+If meshes are generated rather than supplied, also document the matching
+TetGen/pyGIMLi versions and any DOLFIN refinement steps. These generation
+dependencies are optional when the final runtime does not import them.
+
+Drawing environment
+-------------------
+Figures using sumor_paper_figure_style.py require Times New Roman. Set
+SUMOR_PAPER_FONT_DIR to an available font directory, or explicitly document
+any supported substitution. The block cross-validation plotter separately
+preserves its supplied DejaVu Sans layout. The VTK
+survey renderer also needs portable font/path settings and an appropriate
+headless or display-backed rendering environment. Do not assume the
+original /mnt/c/Windows/Fonts or /mnt/d paths exist on a reader's system.
+
+Figure 7 uses VTK, Pillow and a complete VTM scene with its referenced
+VTU/VTP files. Figure 11 currently uses segyio and source SEG-Y files;
+providing a frozen section.npz and a dedicated section plotter can remove
+that dependency from the redraw-only route after the new entry is tested.
+
+Hardware and measurements
+-------------------------
+List resources separately for plotting, a small solver check and the full
+published benchmarks. Do not describe the full HPC allocation as the
+minimum needed for every task. For each benchmark record MPI ranks,
+threads per rank, thread-library settings and launch/affinity commands.
+
+Document complete-forward timing boundaries and the aggregate peak-PSS
+sampling convention. Published performance inputs preserve the reported
+measurements; reruns on other machines need not have identical timings.
+Document numerical acceptance thresholds and the expected output shapes.
+
+Before publication
+------------------
+Replace this checklist with tested commands and an exact environment
+export or container recipe. Verify imports and one small solver case,
+then validate the intended full-case and redraw routes as resources allow.

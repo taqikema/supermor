@@ -1,0 +1,31 @@
+Known source and input attribution for the planned release
+========================================================
+
+custEM
+------
+The release is based on the custEM source in the sibling ../custEM/ repository. Its
+existing LGPLv3/GPL license text is copied unchanged into LICENSE.rst.
+Retain the package's original author and copyright notices when copying
+source into core/. The source commit is recorded in VERSION.txt.
+
+MR3D
+----
+The manuscript cites the original resistivity model by Carvalho and
+Menezes (2017), DOI: https://doi.org/10.5281/zenodo.400233, and identifies
+its license as CC BY 4.0. Preserve the source record, exact downloaded file
+names, selected version, attribution and preprocessing description for any
+material inputs or derived section data actually distributed.
+
+Dependencies and fonts
+----------------------
+Third-party software dependencies keep their own licenses. Refer to the
+versions actually used in ENVIRONMENT.txt; this scaffold does not bundle
+their source, binaries or licenses as a new combined distribution.
+The existing drawing style expects Times New Roman. Document a supported
+font source/substitution; no system font files are included in this folder.
+
+Authors' newly published data
+-----------------------------
+No new data license is selected by this scaffold. Before release, state the
+license for authors' own mesh/plotting datasets and preserve any applicable
+third-party conditions. This note does not replace that final declaration.

@@ -1,0 +1,6 @@
+# Numerical and rendering outputs are generated locally.
+/outputs/**
+!/outputs/**/
+!/outputs/**/.gitkeep
+__pycache__/
+*.pyc

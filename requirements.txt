@@ -1,0 +1,18 @@
+# Candidate Python dependencies for the planned paper release.
+# This is not a lock file or a validated standalone solver environment.
+# Record the tested versions in ENVIRONMENT.txt before publishing.
+# Install the matched FEniCS/DOLFIN, MPI, PETSc, petsc4py, mpi4py,
+# HYPRE/AMS, MUMPS and pyGIMLi stack using the environment instructions.
+# Do not replace environment-managed NumPy/h5py with incompatible wheels.
+numpy
+scipy
+matplotlib
+h5py
+PyYAML
+pyproj
+Pillow
+vtk
+emg3d
+# Needed by the existing MR3D figure-11 SEG-Y loader. If the release
+# exclusively plots a frozen section.npz, it can be omitted from plotting.
+segyio

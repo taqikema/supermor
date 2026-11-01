@@ -1,0 +1,1330 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-11-01",
+  "timezone": "Asia/Shanghai",
+  "manuscript": {
+    "path": "/home/taqikema/projects/custEM/docs/sumor_paper_draft_zh.md",
+    "sha256": "8e2609e0a0aa3923eeb035e9d22a48cc6ae90515da4cb03e95b79a3993f96bf9"
+  },
+  "overall_conclusion": "Do not treat the earlier generator file list as a fully verified from-zero reproduction bundle. Block artifacts and source identities match; sphere records match but the formal H5 is absent locally; MR3D adaptive scale calibration differs and needs a fixed-scale verified route.",
+  "summary": [
+    {
+      "case": "block_cross_validation",
+      "paper_cells": 5256131,
+      "paper_real_dof": 12252168,
+      "status": "formal_h5_topology_and_source_identity_verified",
+      "formal_h5_directly_counted": true,
+      "current_generator_rerun_from_zero": false
+    },
+    {
+      "case": "block_strategy_and_poles",
+      "paper_cells": 309349,
+      "paper_real_dof": 720052,
+      "status": "formal_h5_topology_and_source_identity_verified",
+      "formal_h5_directly_counted": true,
+      "current_generator_rerun_from_zero": false
+    },
+    {
+      "case": "case2_layered_sphere",
+      "paper_cells": 2519112,
+      "paper_real_dof": 5905442,
+      "status": "source_and_production_records_match_formal_h5_missing_locally",
+      "formal_h5_directly_counted": false,
+      "current_generator_rerun_from_zero": false
+    },
+    {
+      "case": "case3_mr3d_M1",
+      "paper_cells": 385245,
+      "paper_real_dof": 897990,
+      "fixed_final_scale": 0.401957,
+      "status": "frozen_counts_match_paper_but_default_calibration_changed_and_formal_h5_missing_locally",
+      "formal_h5_directly_counted": false,
+      "current_generator_rerun_from_zero": false
+    },
+    {
+      "case": "case3_mr3d_M2",
+      "paper_cells": 2168870,
+      "paper_real_dof": 5042000,
+      "fixed_final_scale": 0.19081228839710815,
+      "status": "frozen_counts_match_paper_but_default_calibration_changed_and_formal_h5_missing_locally",
+      "formal_h5_directly_counted": false,
+      "current_generator_rerun_from_zero": false
+    },
+    {
+      "case": "case3_mr3d_M3",
+      "paper_cells": 4780659,
+      "paper_real_dof": 11109832,
+      "fixed_final_scale": 0.14204016427579944,
+      "status": "frozen_counts_match_paper_but_default_calibration_changed_and_formal_h5_missing_locally",
+      "formal_h5_directly_counted": false,
+      "current_generator_rerun_from_zero": false
+    },
+    {
+      "case": "case3_mr3d_M4",
+      "paper_cells": 6409790,
+      "paper_real_dof": 14894240,
+      "fixed_final_scale": 0.12776329735875352,
+      "status": "frozen_counts_match_paper_but_default_calibration_changed_and_formal_h5_missing_locally",
+      "formal_h5_directly_counted": false,
+      "current_generator_rerun_from_zero": false
+    },
+    {
+      "case": "case3_mr3d_M5",
+      "paper_cells": 7877059,
+      "paper_real_dof": 18302584,
+      "fixed_final_scale": 0.11866730553215037,
+      "status": "frozen_counts_match_paper_but_default_calibration_changed_and_formal_h5_missing_locally",
+      "formal_h5_directly_counted": false,
+      "current_generator_rerun_from_zero": false
+    }
+  ],
+  "verification_limits": [
+    "No tetrahedral mesh generation or electromagnetic solve was run during this audit.",
+    "Block counts were independently read from existing H5 tetrahedron topology, with unique edges counted; real P1 DOFs equal twice the edge count.",
+    "Sphere and MR3D counts were verified through frozen metadata and actual production protocols/results; they were not independently recounted from the missing local formal H5 files.",
+    "The emg3d fixed mesh arrays alone were regenerated in memory and matched all frozen arrays and their hashes exactly.",
+    "H5 byte identity is separate from equality of coordinates, topology and material markers; a new filename or container metadata can change the file hash."
+  ],
+  "block_evidence": {
+    "schema_version": 1,
+    "status": "artifact_and_source_verified",
+    "regenerated": false,
+    "verification_method": {
+      "artifacts": "Streamed SHA256 over actual H5 and parameter files; matched mesh metadata and delivery manifests. Paper mesh metadata files matched the corresponding frozen original files byte for byte.",
+      "source": "Streamed/read actual current and frozen source files and compared SHA256; initial cross-validation parent archive source members were read without extraction.",
+      "dimensions": "h5py read actual mesh/topology and mesh/coordinates; enumerated and globally deduplicated all six edges per tetrahedron. For P1 first-kind Nedelec with the experiment natural boundary condition, complex DOF equals unique mesh edges and real DOF is twice that count.",
+      "python": "/home/taqikema/miniforge3/envs/cust_env/bin/python",
+      "numpy": "1.26.4",
+      "h5py": "3.13.0",
+      "finite_element_spaces_created": false,
+      "solver_run": false,
+      "boundary": "No mesh regeneration was performed; source provenance and original artifact identity/counts are verified, not byte-identical regeneration in the current environment."
+    },
+    "cases": [
+      {
+        "case_id": "block_cross_validation",
+        "status": "artifact_and_source_verified",
+        "regenerated": false,
+        "paper_use": "Current manuscript case 1, independent four-frequency validation",
+        "expected": {
+          "cells": 5256131,
+          "edges": 6126084,
+          "real_dof": 12252168
+        },
+        "actual": {
+          "cells": 5256131,
+          "vertices": 869670,
+          "edges": 6126084,
+          "complex_dof": 6126084,
+          "real_dof": 12252168,
+          "material_cell_counts": {
+            "0": 980683,
+            "1": 3952165,
+            "2": 323283
+          },
+          "bounds_m": [
+            [
+              -100000.0,
+              100000.0
+            ],
+            [
+              -100000.0,
+              100000.0
+            ],
+            [
+              -100000.0,
+              100000.0
+            ]
+          ]
+        },
+        "recipe": {
+          "parent_generator": "mesh_custem.py",
+          "level": 2,
+          "volume_scale": 1.0,
+          "mode": "build",
+          "refiner": "refine_receiver_mesh.py",
+          "passes": 1,
+          "algorithm": "DOLFIN Plaza",
+          "redistribute": false,
+          "roi_bounds_m": [
+            [
+              900.0,
+              5100.0
+            ],
+            [
+              -1100.0,
+              1100.0
+            ],
+            [
+              -20.0,
+              0.0
+            ]
+          ],
+          "selected_material_marker": 1,
+          "parent_cells_recorded": 3420904,
+          "current_mesh_plan_equals_original_plan": true
+        },
+        "artifacts": [
+          {
+            "role": "formal_mesh_h5",
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/meshes/custem_L2/_h5/custem_L2.h5",
+            "sha256": "6ec50411f6098d7182ac82798b4f3b5414c8a0d7223385f6eb99bf8eabcfc9c5",
+            "hash_recomputed": true
+          },
+          {
+            "role": "formal_parameters",
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/meshes/custem_L2/para/custem_L2_parameters.json",
+            "sha256": "6f0b7eec44d8356ecb47c627795ce7ad266b7f279aeb3a862dc5ff6d3f3fa9bf",
+            "hash_recomputed": true
+          },
+          {
+            "role": "parent_mesh_h5",
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/tmp/refinement_parent/meshes/custem_L2/_h5/custem_L2.h5",
+            "sha256": "d302dc2d3cfa09d85bf08fa80360869d1d81924aa0c2a94e6b6e329b1d990919",
+            "hash_recomputed": true
+          },
+          {
+            "role": "parent_parameters",
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/tmp/refinement_parent/meshes/custem_L2/para/custem_L2_parameters.json",
+            "sha256": "6f0b7eec44d8356ecb47c627795ce7ad266b7f279aeb3a862dc5ff6d3f3fa9bf",
+            "hash_recomputed": true
+          },
+          {
+            "role": "frozen_mesh_metadata",
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/meshes/custem_L2/mesh.json",
+            "sha256": "503e8e3fd347c3dff1e06e5438694860f7d5a48f27a2c2bc042e499ce0694ea6",
+            "hash_recomputed": true
+          },
+          {
+            "role": "paper_mesh_metadata",
+            "path": "/home/taqikema/projects/custEM/docs/data/shifted_cross_validation_20261101/grids/custem_mesh.json",
+            "sha256": "503e8e3fd347c3dff1e06e5438694860f7d5a48f27a2c2bc042e499ce0694ea6",
+            "hash_recomputed": true
+          }
+        ],
+        "scripts": [
+          {
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/mesh_custem.py",
+            "sha256": "ab2a0138f4c0398d92333409274b92ef3e3320051b7568b4c837918fa059ec7a",
+            "frozen_path": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/mesh_custem.py",
+            "same_as_parent_archive": true,
+            "same_as_frozen_file_and_manifest": true
+          },
+          {
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/refine_receiver_mesh.py",
+            "sha256": "4cef961108cbee2d8531dd4ed19bd106bb477f0a0fff791ec3942caf6a3f6fd8",
+            "frozen_path": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/refine_receiver_mesh.py",
+            "same_as_frozen_file_and_manifest": true
+          },
+          {
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/validation_common.py",
+            "sha256": "d9d9195df1cdad4ca7ef3ca79181d8ced2ad1e68e8a4f41fa0c06dda41515a4f",
+            "frozen_path": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/validation_common.py",
+            "same_as_parent_archive": true,
+            "same_as_frozen_file_and_manifest": true
+          },
+          {
+            "path": "/mnt/d/CSU/custem_shifted_validation_20261030/custem_worker.py",
+            "sha256": "67fd0a182f7efb1cd7bfc45665d2d35accf8563819816e00d493b38bdc34b213",
+            "frozen_path": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/custem_worker.py",
+            "same_as_parent_archive": true,
+            "same_as_frozen_file_and_manifest": true
+          }
+        ],
+        "proof_paths": {
+          "parent_source_archive": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/node_local_20466185/deliverables.tar.gz",
+          "parent_executed_recipe": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/node_local_20466185/review_bundle/campaign_state.json",
+          "parent_mesh_metadata": "/mnt/d/CSU/custem_shifted_validation_20261030/tmp/refinement_parent/meshes/custem_L2/mesh.json",
+          "refinement_executed_recipe": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/receiver_refinement_state.json",
+          "delivery_manifest": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/delivery_manifest.json",
+          "frozen_mesh_source": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/source_custem/custEM/meshgen"
+        }
+      },
+      {
+        "case_id": "block_strategy_and_poles",
+        "status": "artifact_and_source_verified",
+        "regenerated": false,
+        "paper_use": "Current manuscript case 1, field-splitting and single/dual-pole comparisons",
+        "expected": {
+          "cells": 309349,
+          "edges": 360026,
+          "real_dof": 720052
+        },
+        "actual": {
+          "cells": 309349,
+          "vertices": 50372,
+          "edges": 360026,
+          "complex_dof": 360026,
+          "real_dof": 720052,
+          "material_cell_counts": {
+            "0": 43521,
+            "1": 229740,
+            "2": 36088
+          },
+          "bounds_m": [
+            [
+              -100000.0,
+              100000.0
+            ],
+            [
+              -100000.0,
+              100000.0
+            ],
+            [
+              -100000.0,
+              100000.0
+            ]
+          ]
+        },
+        "recipe": {
+          "generator": "mesh_strategy.py",
+          "mode": "build",
+          "accepted_attempt": 1,
+          "volume_scale": 1.0,
+          "tetgen_flags": "-pq1.4aA",
+          "no_parent_mesh_required": true,
+          "current_mesh_plan_equals_original_plan": true,
+          "search_target_cells": 309638,
+          "search_target_real_dof": 720744,
+          "target_relative_tolerance": 0.35,
+          "note": "Search targets are not the realized mesh counts. The manuscript uses actual 309349 cells and 720052 real DOF."
+        },
+        "artifacts": [
+          {
+            "role": "formal_mesh_h5",
+            "path": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/mesh/meshes/_h5/csem_mor.h5",
+            "sha256": "4bdcb42c538be80d72a5097bab447a93404bc229776cb9cc0d45b8edb57ce181",
+            "hash_recomputed": true
+          },
+          {
+            "role": "formal_parameters",
+            "path": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/mesh/meshes/para/csem_mor_parameters.json",
+            "sha256": "648185fda5b8622f93316c63e7b394ac23b7611585f8ded8c6207252e3f69e3b",
+            "hash_recomputed": true
+          },
+          {
+            "role": "frozen_mesh_metadata",
+            "path": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/mesh/mesh.json",
+            "sha256": "17f2fc3b2d0667693b8d647e8ca9fe4afa882ca6255034c0b1eb80dbb3836ac4",
+            "hash_recomputed": true
+          },
+          {
+            "role": "paper_mesh_metadata",
+            "path": "/home/taqikema/projects/custEM/docs/data/shifted_strategy_b1_20261101/mesh.json",
+            "sha256": "17f2fc3b2d0667693b8d647e8ca9fe4afa882ca6255034c0b1eb80dbb3836ac4",
+            "hash_recomputed": true
+          }
+        ],
+        "scripts": [
+          {
+            "path": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/mesh_strategy.py",
+            "sha256": "1de9c36fca2b95c9b468d53cd6ec84315f53de53c4ad0af1f0d48117a4fd3725",
+            "frozen_path": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/mesh_strategy.py",
+            "same_as_frozen_file_and_manifest": true
+          },
+          {
+            "path": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/strategy_contract.py",
+            "sha256": "24ea193ea88fda3b6f713d918011ddf4b43fde62cb73958ab1af23ca7f12b55e",
+            "frozen_path": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/strategy_contract.py",
+            "same_as_frozen_file_and_manifest": true
+          }
+        ],
+        "proof_paths": {
+          "delivery_manifest": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/delivery_manifest.json",
+          "accepted_mesh_search": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/mesh_search.json",
+          "formal_protocol": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/protocol.json",
+          "frozen_mesh_source": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/collected/20466531/source/custEM/meshgen",
+          "current_project_source": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/source/custEM/meshgen",
+          "baseline_project_source": "/mnt/d/CSU/custem_shifted_strategy_b1_retry_20261101/baseline/source/custEM/meshgen"
+        }
+      }
+    ],
+    "shared_mesh_libraries": {
+      "current_repository_root": "/home/taqikema/projects/custEM",
+      "all_listed_files_match_both_frozen_source_trees": true,
+      "strategy_current_and_baseline_source_trees_also_match": true,
+      "files_sha256": {
+        "custEM/meshgen/__init__.py": "86411a5add2bda3e66508d630359a0b47518b85065dc3d6de70defa46963662f",
+        "custEM/meshgen/meshgen_tools.py": "7b9512678b77dc2552c764f7ff7b3b736b24c1569ecaed99ebf87156f050a1ac",
+        "custEM/meshgen/meshgen_utils.py": "7be45a59e10e30f8169b8769c271c40204382f251b0ccefaa054affef3a1c3be",
+        "custEM/meshgen/vtk_convert.py": "094d206be8291e54b056b6c83bf4d0c3b4a6003000922db3f3b991ce70660f9b",
+        "custEM/meshgen/mesh_convert.py": "8ca29626c1982151cb664020c2ce28233a4479e3d25935c498cb6b650e52457e",
+        "custEM/meshgen/interface_mesh.py": "a2c32e3d999fc6a86e515da6f18e3e0983a76729d45f2398441de851c1a9eb9d"
+      }
+    }
+  },
+  "sphere_evidence": {
+    "case": "case2_layered_sphere",
+    "status": "source_and_production_records_verified_mesh_artifact_missing",
+    "regenerated": false,
+    "expected": {
+      "cells": 2519112,
+      "complex_edge_dofs": 2952721,
+      "real_edge_dofs": 5905442,
+      "mesh_sha256": "5f18d98ec03f90e81ba53926c9d2389910845abe043e3e7e03f773b7050f3cc1",
+      "parameter_sha256": "24c99ba8efe0c1942902df45d1d69477abb47eee255097275b4c205273668b25",
+      "mesh_metadata_sha256": "c7cc1071a71972f52ae8abd16f77b2462729bf0a2abd2a05a691f255ab36846a",
+      "hpc_mesh_file": "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/q17_rx_plaza_earth_round_02/meshes/_h5/terrain_sphere.h5",
+      "hpc_parameter_file": "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/q17_rx_plaza_earth_round_02/meshes/para/terrain_sphere_parameters.json"
+    },
+    "source_directories": {
+      "wsl": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1",
+      "windows_mounted": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910",
+      "windows": "D:\\CSU\\custem_hpc_terrain_sphere_test1_20261022_1792668434910"
+    },
+    "scripts": [
+      {
+        "name": "build_terrain_mesh_sensitivity.py",
+        "wsl_path": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1/build_terrain_mesh_sensitivity.py",
+        "windows_mounted_path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/build_terrain_mesh_sensitivity.py",
+        "sha256": "cf9151d6e99da8c3cdff8385d12c52064ba1e2702f04e703c6291623c6c84314",
+        "wsl_and_windows_bytes_match": true,
+        "frozen_record_matches": true,
+        "frozen_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/plaza1_refinement.json",
+            "lines": [
+              16
+            ]
+          },
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/earth2_refinement.json",
+            "lines": [
+              16
+            ]
+          }
+        ]
+      },
+      {
+        "name": "refine_terrain_rx_star_dolfin.py",
+        "wsl_path": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1/refine_terrain_rx_star_dolfin.py",
+        "windows_mounted_path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/refine_terrain_rx_star_dolfin.py",
+        "sha256": "81b47e154f6aea9e8e9bb0aabc5f6126af7c2b70786ccdd2f2a466d428e44fc3",
+        "wsl_and_windows_bytes_match": true,
+        "frozen_record_matches": true,
+        "frozen_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/plaza1_refinement.json",
+            "lines": [
+              14
+            ]
+          }
+        ]
+      },
+      {
+        "name": "refine_terrain_rx_earth_star_dolfin.py",
+        "wsl_path": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1/refine_terrain_rx_earth_star_dolfin.py",
+        "windows_mounted_path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/refine_terrain_rx_earth_star_dolfin.py",
+        "sha256": "a6bb3c717b722c8876f643ed3126e59517b7eb2604fcdf692ef1f1e4118046a1",
+        "wsl_and_windows_bytes_match": true,
+        "frozen_record_matches": true,
+        "frozen_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/earth2_refinement.json",
+            "lines": [
+              14
+            ]
+          }
+        ]
+      },
+      {
+        "name": "refine_terrain_rx_star.py",
+        "wsl_path": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1/refine_terrain_rx_star.py",
+        "windows_mounted_path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/refine_terrain_rx_star.py",
+        "sha256": "f28751ece0bd5a03955f2970c7f3dbc492a43df3f94769a1e48a4c0bcd37d89c",
+        "wsl_and_windows_bytes_match": true,
+        "frozen_record_matches": true,
+        "frozen_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/plaza1_refinement.json",
+            "lines": [
+              15
+            ]
+          },
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/earth2_refinement.json",
+            "lines": [
+              15
+            ]
+          }
+        ]
+      },
+      {
+        "name": "sphere_surface_template.npz",
+        "wsl_path": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1/sphere_surface_template.npz",
+        "windows_mounted_path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/sphere_surface_template.npz",
+        "sha256": "e3c89521b6cceb8c1c48641da8bcb5a57d2fabc4d04a247ff5a9fded15c295b5",
+        "wsl_and_windows_bytes_match": true,
+        "frozen_record_matches": true,
+        "frozen_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/formal_generation_settings.json",
+            "lines": [
+              15
+            ]
+          }
+        ]
+      }
+    ],
+    "pipeline": [
+      {
+        "stage": "q17_initial",
+        "script": "build_terrain_mesh_sensitivity.py",
+        "actual_argv": [
+          "python",
+          "-u",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/build_terrain_mesh_sensitivity.py",
+          "--output",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/candidate_q17_local025",
+          "--mode",
+          "formal",
+          "--outer-km",
+          "80",
+          "--scale",
+          "4",
+          "--local-volume-factor",
+          "0.25",
+          "--quality",
+          "1.7",
+          "--max-attempts",
+          "1"
+        ],
+        "launcher_argv": [
+          "srun",
+          "--ntasks=1",
+          "--cpus-per-task=2",
+          "--cpu-bind=cores"
+        ],
+        "cells": 1790426,
+        "complex_edge_dofs": 2094972,
+        "real_edge_dofs": 4189944,
+        "output_mesh_directory": "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/candidate_q17_local025/attempt_01",
+        "mesh_sha256": "1f81b959825ebcf9c900cc43aab227d042707739bc9241ed2cbaf9d0647608e9",
+        "argv_evidence": {
+          "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/mesh_q17.sbatch",
+          "lines": [
+            16
+          ]
+        },
+        "mesh_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/q17_mesh.json",
+            "lines": [
+              5,
+              8,
+              9,
+              13,
+              14
+            ]
+          },
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/plaza1_refinement.json",
+            "lines": [
+              4,
+              12,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "stage": "plaza_r1_both_sides",
+        "script": "refine_terrain_rx_star_dolfin.py",
+        "actual_argv": [
+          "python",
+          "-u",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/refine_terrain_rx_star_dolfin.py",
+          "--input",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/candidate_q17_local025/attempt_01",
+          "--output",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/q17_rx_plaza_round_01",
+          "--max-added-dofs",
+          "905028"
+        ],
+        "launcher_argv": [
+          "srun",
+          "--ntasks=1",
+          "--cpus-per-task=1",
+          "--cpu-bind=cores"
+        ],
+        "cells": 2130330,
+        "complex_edge_dofs": 2494091,
+        "real_edge_dofs": 4988182,
+        "output_mesh_directory": "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/q17_rx_plaza_round_01",
+        "parent_mesh_sha256": "1f81b959825ebcf9c900cc43aab227d042707739bc9241ed2cbaf9d0647608e9",
+        "mesh_sha256": "d36d20f13fcbafaa2b1a646db4bbe0cb56cb4bbacd8aefb8298364d017a2f25d",
+        "argv_evidence": {
+          "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/rx_plaza_round1.sbatch",
+          "lines": [
+            16
+          ]
+        },
+        "mesh_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/plaza1_refinement.json",
+            "lines": [
+              30,
+              31,
+              34,
+              35,
+              86,
+              88,
+              103,
+              104
+            ]
+          },
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/earth2_refinement.json",
+            "lines": [
+              4,
+              12,
+              13
+            ]
+          }
+        ]
+      },
+      {
+        "stage": "plaza_r2_earth_only",
+        "script": "refine_terrain_rx_earth_star_dolfin.py",
+        "actual_argv": [
+          "python",
+          "-u",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/refine_terrain_rx_earth_star_dolfin.py",
+          "--input",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/q17_rx_plaza_round_01",
+          "--output",
+          "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/q17_rx_plaza_earth_round_02",
+          "--max-added-dofs",
+          "505909"
+        ],
+        "launcher_argv": [
+          "srun",
+          "--ntasks=1",
+          "--cpus-per-task=1",
+          "--cpu-bind=cores"
+        ],
+        "cells": 2519112,
+        "complex_edge_dofs": 2952721,
+        "real_edge_dofs": 5905442,
+        "output_mesh_directory": "/public/home/hpc265001050/runs/0_code/custem_hpc_terrain_sphere_test1_20261022_1792668434910/meshes/q17_rx_plaza_earth_round_02",
+        "parent_mesh_sha256": "d36d20f13fcbafaa2b1a646db4bbe0cb56cb4bbacd8aefb8298364d017a2f25d",
+        "mesh_sha256": "5f18d98ec03f90e81ba53926c9d2389910845abe043e3e7e03f773b7050f3cc1",
+        "argv_evidence": {
+          "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/rx_earth_round2.sbatch",
+          "lines": [
+            16
+          ]
+        },
+        "mesh_evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/earth2_refinement.json",
+            "lines": [
+              35,
+              36,
+              39,
+              40,
+              91,
+              93,
+              108,
+              109
+            ]
+          }
+        ],
+        "marking": "Explicitly mark material-1 Rx-incident cells; air cells can refine through conformity closure."
+      }
+    ],
+    "verified_record_links": {
+      "r1_outputs_match_r2_inputs": true,
+      "matched_r1_to_r2_files": [
+        "mesh.json",
+        "geometry_audit.json",
+        "source_edge_audit.json",
+        "receiver_audit.json",
+        "meshes/_h5/terrain_sphere.h5",
+        "meshes/para/terrain_sphere_parameters.json"
+      ],
+      "r2_mesh_parameters_and_metadata_match_production_rerun_protocol": true,
+      "local_earth2_metadata_actual_bytes_match_production_hash": true,
+      "local_metadata_files": [
+        "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/earth2_mesh.json",
+        "/home/taqikema/projects/custEM/docs/data/hpc_terrain_sphere_test1_20261022/preparation_report/earth2_mesh.json"
+      ],
+      "production_protocols": [
+        {
+          "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/formal_fat01_protocol_20261023.json",
+          "lines": [
+            120,
+            121,
+            122,
+            123,
+            124
+          ]
+        },
+        {
+          "path": "/mnt/d/CSU/custem_test1_rerun_20261027/protocol.json",
+          "lines": [
+            108,
+            109,
+            110,
+            112,
+            118,
+            119,
+            120,
+            121
+          ]
+        }
+      ]
+    },
+    "artifact_found": false,
+    "H5_count_verified": false,
+    "formal_parameter_artifact_found": false,
+    "artifact_search": {
+      "roots": [
+        "/mnt/d/CSU",
+        "/home/taqikema/projects/custEM"
+      ],
+      "method": "Read-only find traversal, unaffected by gitignore, for sphere H5 filenames; targeted full traversal for terrain_sphere_parameters.json.",
+      "formal_and_parent_mesh_directories_found": false,
+      "completed_results_archive": "/mnt/d/CSU/custem_test1_rerun_20261027/已完成23组结果_20261028_1011/completed_results.tar.gz",
+      "archive_member_count": 784,
+      "archive_contains_h5_or_parameter_json": false
+    },
+    "production_verification": {
+      "root": "/mnt/d/CSU/custem_test1_rerun_20261027/已完成23组结果_20261028_1011/data/source/cases",
+      "stats_glob": "*/attempt_*/result/stats.json",
+      "receiver_glob": "*/attempt_*/result/receivers.npz",
+      "verified_stats_count": 23,
+      "verified_receiver_npz_count": 23,
+      "all_stats_have_expected_cells_complex_real_dofs": true,
+      "all_stats_have_expected_mesh_parameter_metadata_hashes": true,
+      "all_receiver_npz_have_expected_mesh_hash": true,
+      "all_receiver_E_H_shapes": [
+        20,
+        200,
+        3
+      ],
+      "verification_interpreter": "/home/taqikema/miniforge3/envs/cust_env/bin/python",
+      "example_stats_evidence": {
+        "path": "/mnt/d/CSU/custem_test1_rerun_20261027/已完成23组结果_20261028_1011/data/source/cases/00_IFOM_p64/attempt_001/result/stats.json",
+        "lines": [
+          228,
+          229,
+          794,
+          796,
+          797
+        ]
+      }
+    },
+    "version_misuse_risks": [
+      {
+        "risk": "basic_builder_defaults_are_not_formal_q17_parameters",
+        "path": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1/build_terrain_mesh.py",
+        "sha256": "5e5a24306601a50c97bd7fb40725fec80428c0580528310cec5ff49c3dc2d04a",
+        "defaults": {
+          "mode": "pilot",
+          "outer_km": 20,
+          "scale": 1,
+          "quality": 1.4
+        },
+        "evidence": {
+          "path": "/home/taqikema/projects/custEM/examples/hpc_terrain_sphere_test1/build_terrain_mesh.py",
+          "lines": [
+            354,
+            355,
+            356,
+            357
+          ]
+        }
+      },
+      {
+        "risk": "misleading_formal_generation_settings_is_older_quality1p4_configuration",
+        "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/formal_generation_settings.json",
+        "old_quality": 1.4,
+        "old_formal_mesh_cells": 2474029,
+        "old_formal_mesh_path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/formal_mesh.json",
+        "old_formal_mesh_sha256": "b9cb792259706ff4ca8cedff3b38aaa35dea54efcefb0c539122cc111f6e21d5",
+        "correct_q17_quality": 1.7,
+        "evidence": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/formal_generation_settings.json",
+            "lines": [
+              4
+            ]
+          },
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/mesh_q17.sbatch",
+            "lines": [
+              16
+            ]
+          }
+        ]
+      },
+      {
+        "risk": "do_not_replace_recorded_R1_script_with_v2_variant",
+        "recorded_script": "refine_terrain_rx_star_dolfin.py",
+        "evidence": {
+          "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/plaza1_refinement.json",
+          "lines": [
+            14
+          ]
+        }
+      },
+      {
+        "risk": "two_local_tiny_H5_files_are_not_the_formal_mesh",
+        "verified_with": "Read-only h5py.File(..., r); topology/coordinates shapes and actual file SHA256.",
+        "tiny_files": [
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/driver_validation/diagnostic_tiny_01/mesh/meshes/_h5/terrain_sphere.h5",
+            "sha256": "f7e6aa5369e4a32a022abdaa80ee75f68d8f16a1012741d03012ea847f229878",
+            "mesh_topology_shape": [
+              240,
+              4
+            ],
+            "mesh_coordinates_shape": [
+              99,
+              3
+            ]
+          },
+          {
+            "path": "/mnt/d/CSU/custem_hpc_terrain_sphere_test1_20261022_1792668434910/driver_validation/prewarm_tiny_01/mesh/meshes/_h5/terrain_sphere.h5",
+            "sha256": "24c6b09d7ecc91abbcf9b0d609f95e01e678fd4f00bd6b4264a6b567978fca1c",
+            "mesh_topology_shape": [
+              960,
+              4
+            ],
+            "mesh_coordinates_shape": [
+              275,
+              3
+            ]
+          }
+        ]
+      }
+    ],
+    "limits": [
+      "The formal and parent H5 byte hashes are verified across frozen records, not recomputed from missing local H5 artifacts.",
+      "The formal parameter JSON hash is verified across records; a matching local formal parameter file was not located.",
+      "No mesh generation or numerical solve was run; exact regenerated topology or file SHA identity is untested.",
+      "The refinement entry points require parent H5 and companion parameter/audit/source/receiver files.",
+      "Matching top-level script and template hashes does not alone establish a reproducible full dependency/toolchain environment."
+    ],
+    "work_performed": "Read-only inspection, SHA256 of existing source/template/metadata files, JSON and archived member inspection, existing receiver NPZ validation, and tiny H5 inspection. Only this temporary audit JSON was written."
+  },
+  "mr3d_evidence": {
+    "audit_date": "2026-11-01",
+    "scope": "Read-only source, manifest, archive and shape audit; no mesh generation, FEM assembly or solve executed.",
+    "source_root": "/mnt/d/CSU/mr3d_hpc_20261026",
+    "protocol": "/home/taqikema/projects/custEM/docs/data/mr3d_four_methods_20261030/protocol.json",
+    "code_checks": {
+      "mesh.py": {
+        "D_actual_sha256": "70239470c82eca9cc4f71cabdb882b7faeb141cf8d05bca9ed53a5c4bdb01735",
+        "code_manifest_sha256": "70239470c82eca9cc4f71cabdb882b7faeb141cf8d05bca9ed53a5c4bdb01735",
+        "tar_member_sha256": "70239470c82eca9cc4f71cabdb882b7faeb141cf8d05bca9ed53a5c4bdb01735",
+        "all_match": true,
+        "WSL_old_sha256": "044a01a4d063153968a3a727a7fd4d512a749208df69007719d77f25567f654d"
+      },
+      "mr3d.py": {
+        "D_actual_sha256": "ceb2241bf83c0791131062951a3afef07d509ab910e33bc81120c682c2ae6a73",
+        "code_manifest_sha256": "ceb2241bf83c0791131062951a3afef07d509ab910e33bc81120c682c2ae6a73",
+        "tar_member_sha256": "ceb2241bf83c0791131062951a3afef07d509ab910e33bc81120c682c2ae6a73",
+        "all_match": true,
+        "WSL_old_sha256": "13450cd10ad78b8c5c7cc6fcf1966c9a005e29239be37b9c1ed6f1a822c43ea5"
+      },
+      "prepare.py": {
+        "D_actual_sha256": "cff601dfd2803bac7089314365e41f3038168d31cc1354630565e3b1a4fe75d6",
+        "code_manifest_sha256": "cff601dfd2803bac7089314365e41f3038168d31cc1354630565e3b1a4fe75d6",
+        "tar_member_sha256": "cff601dfd2803bac7089314365e41f3038168d31cc1354630565e3b1a4fe75d6",
+        "all_match": true,
+        "WSL_old_sha256": "3d24eaa4240fac517d101efe438ee3460dca3891203da310f06cafe48a081faf"
+      }
+    },
+    "function_ast_comparison": {
+      "_generate": {
+        "equal": true,
+        "WSL_line": 89,
+        "D_line": 105
+      },
+      "build_mesh": {
+        "equal": true,
+        "WSL_line": 128,
+        "D_line": 144
+      },
+      "read_tetgen_counts": {
+        "equal": true,
+        "WSL_line": 54,
+        "D_line": 70
+      },
+      "_initial_scale": {
+        "equal": true,
+        "WSL_line": 42,
+        "D_line": 58
+      },
+      "_next_scale": {
+        "equal": false,
+        "WSL_line": 26,
+        "D_line": 26
+      }
+    },
+    "scale_schedule_arithmetic": [
+      {
+        "level": "M2",
+        "next_attempt": 2,
+        "recorded_scale": 0.19081228839710815,
+        "predictions": {
+          "WSL_old": 0.19081228839710815,
+          "D_current": 0.19081228839710815
+        },
+        "D_current_matches": true,
+        "WSL_old_matches": true
+      },
+      {
+        "level": "M4",
+        "next_attempt": 2,
+        "recorded_scale": 0.12776329735875352,
+        "predictions": {
+          "WSL_old": 0.12776329735875352,
+          "D_current": 0.12776329735875352
+        },
+        "D_current_matches": true,
+        "WSL_old_matches": true
+      },
+      {
+        "level": "M5",
+        "next_attempt": 2,
+        "recorded_scale": 0.11608819698635368,
+        "predictions": {
+          "WSL_old": 0.11608819698635368,
+          "D_current": 0.11608819698635368
+        },
+        "D_current_matches": true,
+        "WSL_old_matches": true
+      },
+      {
+        "level": "M5",
+        "next_attempt": 3,
+        "recorded_scale": 0.1761327959168614,
+        "predictions": {
+          "WSL_old": 0.1761327959168614,
+          "D_current": 0.13299479136082398
+        },
+        "D_current_matches": false,
+        "WSL_old_matches": true
+      },
+      {
+        "level": "M5",
+        "next_attempt": 4,
+        "recorded_scale": 0.11866730553215037,
+        "predictions": {
+          "WSL_old": 0.11866730553215037,
+          "D_current": 0.13299479136082398
+        },
+        "D_current_matches": false,
+        "WSL_old_matches": true
+      }
+    ],
+    "levels": [
+      {
+        "level": "M1",
+        "formal_mesh_name": "mr3d_m1_a01",
+        "formal_m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M1/attempt_01",
+        "scale": 0.401957,
+        "quality": 2.0,
+        "half_extent": 11400.0,
+        "cells": 385245,
+        "complex_dof": 448995,
+        "real_dof": 897990,
+        "paper_protocol_counts_match": true,
+        "manifest_path": "/mnt/d/CSU/mr3d_hpc_20261026/reports/M1_manifest.json",
+        "manifest_actual_sha256": "c0c559816d9f158ac1d2f958cef7ad2948fb52511bd09e5782d64b16664d48dc",
+        "manifest_protocol_sha256": "c0c559816d9f158ac1d2f958cef7ad2948fb52511bd09e5782d64b16664d48dc",
+        "manifest_hash_matches_protocol": true,
+        "frozen_H5_sha256": "f42240134c9de6f062a1cfa98ce713b13b43ac4eaf9163515a6d624484992101",
+        "frozen_parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "recipe_argv_unexecuted": [
+          "python",
+          "experiments/mr3d_custem/mr3d.py",
+          "--workdir",
+          "<prepared_original_workdir>",
+          "mesh",
+          "--level",
+          "M1",
+          "--initial-scale",
+          "0.401957",
+          "--quality",
+          "2",
+          "--half-extent",
+          "11400",
+          "--max-attempts",
+          "1",
+          "--tolerance",
+          "0.15"
+        ],
+        "selected_attempts": [
+          {
+            "attempt": 1,
+            "mesh_name": "mr3d_m1_a01",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M1/attempt_01",
+            "scale": 0.401957,
+            "quality": 2.0,
+            "complex_dof": 448995,
+            "real_block_dof": 897990,
+            "n_elements": 385245,
+            "relative_error": 0.04101674715238601,
+            "elapsed_seconds": 54.57472291588783,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M1/attempt_01/mesh.log"
+          }
+        ],
+        "reused_from": null
+      },
+      {
+        "level": "M2",
+        "formal_mesh_name": "mr3d_m2_a02",
+        "formal_m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M2/attempt_02",
+        "scale": 0.19081228839710815,
+        "quality": 2.0,
+        "half_extent": 11400.0,
+        "cells": 2168870,
+        "complex_dof": 2521000,
+        "real_dof": 5042000,
+        "paper_protocol_counts_match": true,
+        "manifest_path": "/mnt/d/CSU/mr3d_hpc_20261026/reports/M2_manifest.json",
+        "manifest_actual_sha256": "94f9bb9982a1c9d8d0bb14a922f58ab759a3a62f943d7fb8a92af1486e1c6932",
+        "manifest_protocol_sha256": "94f9bb9982a1c9d8d0bb14a922f58ab759a3a62f943d7fb8a92af1486e1c6932",
+        "manifest_hash_matches_protocol": true,
+        "frozen_H5_sha256": "bad95a8c38f2c1774797ddfe95c455d22c36f85a0ecab5986708f5293bf6ebbe",
+        "frozen_parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "recipe_argv_unexecuted": [
+          "python",
+          "experiments/mr3d_custem/mr3d.py",
+          "--workdir",
+          "<prepared_original_workdir>",
+          "mesh",
+          "--level",
+          "M2",
+          "--initial-scale",
+          "0.19081228839710815",
+          "--quality",
+          "2",
+          "--half-extent",
+          "11400",
+          "--max-attempts",
+          "1",
+          "--tolerance",
+          "0.15"
+        ],
+        "selected_attempts": [
+          {
+            "attempt": 1,
+            "mesh_name": "mr3d_m2_a01",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M2/attempt_01",
+            "scale": 0.22142359587681718,
+            "quality": 2.0,
+            "complex_dof": 1718921,
+            "real_block_dof": 3437842,
+            "n_elements": 1478192,
+            "relative_error": 0.3600481158712383,
+            "elapsed_seconds": 39.01893307454884,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M2/attempt_01/mesh.log"
+          },
+          {
+            "attempt": 2,
+            "mesh_name": "mr3d_m2_a02",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M2/attempt_02",
+            "scale": 0.19081228839710815,
+            "quality": 2.0,
+            "complex_dof": 2521000,
+            "real_block_dof": 5042000,
+            "n_elements": 2168870,
+            "relative_error": 0.06143522600014295,
+            "elapsed_seconds": 55.06102932430804,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M2/attempt_02/mesh.log"
+          }
+        ],
+        "reused_from": null
+      },
+      {
+        "level": "M3",
+        "formal_mesh_name": "mr3d_m5_a01",
+        "formal_m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_01",
+        "scale": 0.14204016427579944,
+        "quality": 2.0,
+        "half_extent": 11400.0,
+        "cells": 4780659,
+        "complex_dof": 5554916,
+        "real_dof": 11109832,
+        "paper_protocol_counts_match": true,
+        "manifest_path": "/mnt/d/CSU/mr3d_hpc_20261026/reports/M3_manifest.json",
+        "manifest_actual_sha256": "6bd9e5794ecf2b6160a1421ac34df055bb1deb63b180edc1526d419166fb85ad",
+        "manifest_protocol_sha256": "6bd9e5794ecf2b6160a1421ac34df055bb1deb63b180edc1526d419166fb85ad",
+        "manifest_hash_matches_protocol": true,
+        "frozen_H5_sha256": "25f0ab45fd95c34523bd73e75eb8f095412c935d0c7aa9de47f570cd276df128",
+        "frozen_parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "recipe_argv_unexecuted": [
+          "python",
+          "experiments/mr3d_custem/mr3d.py",
+          "--workdir",
+          "<prepared_original_workdir>",
+          "mesh",
+          "--level",
+          "M3",
+          "--initial-scale",
+          "0.14204016427579944",
+          "--quality",
+          "2",
+          "--half-extent",
+          "11400",
+          "--max-attempts",
+          "1",
+          "--tolerance",
+          "0.15"
+        ],
+        "selected_attempts": [
+          {
+            "attempt": 1,
+            "mesh_name": "mr3d_m5_a01",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_01",
+            "scale": 0.14204016427579944,
+            "quality": 2.0,
+            "complex_dof": 5554916,
+            "real_block_dof": 11109832,
+            "n_elements": 4780659,
+            "relative_error": 0.0683233397273435,
+            "elapsed_seconds": 200.55698804557323,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_01/mesh.log",
+            "reused": true
+          }
+        ],
+        "reused_from": {
+          "level": "M5",
+          "attempt": 1,
+          "generation_job_id": "20426626",
+          "conversion_job_id": "20427016",
+          "mesh_directory": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_01",
+          "previous_M3_job_id": "20426624",
+          "reason": "Existing same-geometry candidate matches M3 size target",
+          "conversion_seconds": 40.0151043869555
+        }
+      },
+      {
+        "level": "M4",
+        "formal_mesh_name": "mr3d_m4_a02",
+        "formal_m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M4/attempt_02",
+        "scale": 0.12776329735875352,
+        "quality": 2.0,
+        "half_extent": 11400.0,
+        "cells": 6409790,
+        "complex_dof": 7447120,
+        "real_dof": 14894240,
+        "paper_protocol_counts_match": true,
+        "manifest_path": "/mnt/d/CSU/mr3d_hpc_20261026/reports/M4_manifest.json",
+        "manifest_actual_sha256": "93efe765227a3039bb627b4bc31d29fedbd84cd20978581c2328bd2b6665d7b5",
+        "manifest_protocol_sha256": "93efe765227a3039bb627b4bc31d29fedbd84cd20978581c2328bd2b6665d7b5",
+        "manifest_hash_matches_protocol": true,
+        "frozen_H5_sha256": "1c74826ce3171fd6676043abe3acc37f65e0472ddea07d3c617fb1bed4d3ab71",
+        "frozen_parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "recipe_argv_unexecuted": [
+          "python",
+          "experiments/mr3d_custem/mr3d.py",
+          "--workdir",
+          "<prepared_original_workdir>",
+          "mesh",
+          "--level",
+          "M4",
+          "--initial-scale",
+          "0.12776329735875352",
+          "--quality",
+          "2",
+          "--half-extent",
+          "11400",
+          "--max-attempts",
+          "1",
+          "--tolerance",
+          "0.15"
+        ],
+        "selected_attempts": [
+          {
+            "attempt": 1,
+            "mesh_name": "mr3d_m4_a01",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M4/attempt_01",
+            "scale": 0.1549461602424384,
+            "quality": 2.0,
+            "complex_dof": 4394543,
+            "real_block_dof": 8789086,
+            "n_elements": 3781653,
+            "relative_error": 0.4393705856207776,
+            "elapsed_seconds": 177.47865965403616,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M4/attempt_01/mesh.log"
+          },
+          {
+            "attempt": 2,
+            "mesh_name": "mr3d_m4_a02",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M4/attempt_02",
+            "scale": 0.12776329735875352,
+            "quality": 2.0,
+            "complex_dof": 7447120,
+            "real_block_dof": 14894240,
+            "n_elements": 6409790,
+            "relative_error": 0.04994113735790173,
+            "elapsed_seconds": 253.8900562026538,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M4/attempt_02/mesh.log"
+          }
+        ],
+        "reused_from": null
+      },
+      {
+        "level": "M5",
+        "formal_mesh_name": "mr3d_m5_a04",
+        "formal_m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_04",
+        "scale": 0.11866730553215037,
+        "quality": 2.0,
+        "half_extent": 11400.0,
+        "cells": 7877059,
+        "complex_dof": 9151292,
+        "real_dof": 18302584,
+        "paper_protocol_counts_match": true,
+        "manifest_path": "/mnt/d/CSU/mr3d_hpc_20261026/reports/M5_manifest.json",
+        "manifest_actual_sha256": "8ff0a7c7e8902cd6aa89dc50b7e2200bd78ba5c649b0061503d849a5e869c1e1",
+        "manifest_protocol_sha256": "8ff0a7c7e8902cd6aa89dc50b7e2200bd78ba5c649b0061503d849a5e869c1e1",
+        "manifest_hash_matches_protocol": true,
+        "frozen_H5_sha256": "72fa86cc0a78458ae0ab1c1239480917e8f59d4850b6f343f08db000ea0ae899",
+        "frozen_parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "recipe_argv_unexecuted": [
+          "python",
+          "experiments/mr3d_custem/mr3d.py",
+          "--workdir",
+          "<prepared_original_workdir>",
+          "mesh",
+          "--level",
+          "M5",
+          "--initial-scale",
+          "0.11866730553215037",
+          "--quality",
+          "2",
+          "--half-extent",
+          "11400",
+          "--max-attempts",
+          "1",
+          "--tolerance",
+          "0.15"
+        ],
+        "selected_attempts": [
+          {
+            "attempt": 1,
+            "mesh_name": "mr3d_m5_a01",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_01",
+            "scale": 0.14204016427579944,
+            "quality": 2.0,
+            "complex_dof": 5554916,
+            "real_block_dof": 11109832,
+            "n_elements": 4780659,
+            "relative_error": 0.45407786903370817,
+            "elapsed_seconds": 200.55698804557323,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_01/mesh.log"
+          },
+          {
+            "attempt": 2,
+            "mesh_name": "mr3d_m5_a02",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_02",
+            "scale": 0.11608819698635368,
+            "quality": 2.0,
+            "complex_dof": 35538843,
+            "real_block_dof": 71077686,
+            "n_elements": 30585929,
+            "relative_error": 2.4926614376592706,
+            "elapsed_seconds": 1148.4882697840221,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_02/mesh.log"
+          },
+          {
+            "attempt": 3,
+            "mesh_name": "mr3d_m5_a03",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_03",
+            "scale": 0.1761327959168614,
+            "quality": 2.0,
+            "complex_dof": 3111855,
+            "real_block_dof": 6223710,
+            "n_elements": 2677505,
+            "relative_error": 0.6941753011462082,
+            "elapsed_seconds": 78.00832664081827,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_03/mesh.log"
+          },
+          {
+            "attempt": 4,
+            "mesh_name": "mr3d_m5_a04",
+            "m_dir": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_04",
+            "scale": 0.11866730553215037,
+            "quality": 2.0,
+            "complex_dof": 9151292,
+            "real_block_dof": 18302584,
+            "n_elements": 7877059,
+            "relative_error": 0.10063575583595163,
+            "elapsed_seconds": 250.64173802919686,
+            "log": "/public/home/hpc265001050/runs/0_code/mr3d_fine_20261026/experiments/mr3d_custem/run/meshes/M5/attempt_04/mesh.log"
+          }
+        ],
+        "reused_from": null
+      }
+    ],
+    "limits": [
+      "Formal paper H5 files were not found in the examined WSL MR3D run, D:/CSU MR3D directories or their tar.gz archives; frozen H5 fingerprints were checked as recorded metadata, not against current formal H5 bytes.",
+      "Fixed-scale recipes below are unexecuted candidates; exact topology, counts and hash must be checked before claiming exact regeneration.",
+      "Fixed-scale one-attempt runs use new output attempt/file names; matching output H5 bytes are not guaranteed."
+    ],
+    "code_archive": {
+      "path": "/mnt/d/CSU/mr3d_hpc_20261026/mr3d_code_and_jobs.tar.gz",
+      "actual_sha256": "4517a2c75434cb5b730e21c1518005bbb5596938cf11317297857e6afc24b167",
+      "manifest_sha256": "4517a2c75434cb5b730e21c1518005bbb5596938cf11317297857e6afc24b167"
+    },
+    "archived_original_version_search": {
+      "found_generator_archive": "/mnt/d/CSU/mr3d_hpc_20261026/mr3d_code_and_jobs.tar.gz",
+      "found_generator_sha256": "70239470c82eca9cc4f71cabdb882b7faeb141cf8d05bca9ed53a5c4bdb01735",
+      "old_complete_generator_exists": "/home/taqikema/projects/simpeg/experiments/mr3d_custem/mesh.py",
+      "old_complete_generator_sha256": "044a01a4d063153968a3a727a7fd4d512a749208df69007719d77f25567f654d",
+      "historical_operation_archive_sha256_values": [
+        "5bb759a3a47bb6a29f5c83ef0a59323c4a8bf22a925cfcbc0083baf7da7b8f0e",
+        "7ff2888faf6660aa4249c7bfdbd80f95a583c8247f1fb3ca3a331cdd6ea43ef0",
+        "1bf9bd6db0971e8b523d0bfb24f48e63f2d076c503b1efecc3a33182c4f746ff",
+        "4517a2c75434cb5b730e21c1518005bbb5596938cf11317297857e6afc24b167"
+      ],
+      "note": "Examined MR3D tar.gz archives contain only the final bracketed generator snapshot. Earlier upload archive hashes are recorded in operations but corresponding historical archive bytes were not found. WSL old mesh.py matches the historical scale arithmetic; this alone does not establish its full-file hash was the generation-time snapshot."
+    },
+    "recipe_preconditions": {
+      "prepared_manifest_model": "original",
+      "prepared_material_shape": [
+        1022,
+        371,
+        1229
+      ],
+      "prepared_interfaces": "All six exact interface files matching protocol input_sha256.",
+      "prepared_survey": "Frozen inline/broadside/source endpoints.",
+      "runtime": "Match archived custEM 0726e353be457a558f48a37343a5f49a5f3fb673 and mesh-tool dependencies, TetGen and pyGIMLi versions.",
+      "verify_after_generation": "TetGen .1.ele and .1.edge headers must match paper cells and complex DOF; H5 topology/domains and actual runtime real DOF must agree. None of this regeneration was executed."
+    }
+  },
+  "emg3d_evidence": {
+    "case": "block_emg3d",
+    "status": "regenerated_arrays_match_frozen_inputs",
+    "method": "Ran fixed_mesh_arrays in memory, not a solver; all arrays exactly equal the locally frozen NPZ and array hashes.",
+    "script": "/mnt/d/CSU/custem_shifted_validation_20261030/emg3d_worker.py",
+    "script_sha256": "386715aae0df64052be7d28e66c764e63311613b40d1ef3717e0a4807f0a7d6f",
+    "frozen_metadata": "/home/taqikema/projects/custEM/docs/data/shifted_cross_validation_20261101/grids/emg3d_mesh.json",
+    "frozen_npz": "/home/taqikema/projects/custEM/docs/data/shifted_cross_validation_20261101/grids/emg3d_axes_sigma.npz",
+    "frozen_npz_sha256": "4540f1ebd2dac815d5db64b9ab7d523d653e3bffc28b6ebd92c320cf62d1bfd7",
+    "mesh_hash": "e1e0463cfea631b39e49f698519df9d919964ea090311d96945f1afb5bb826c9",
+    "shape_cells": [
+      128,
+      128,
+      80
+    ],
+    "cells": 1310720,
+    "complex_edges": 4006224,
+    "pec_free_complex_edges": 3858768,
+    "array_sha256": {
+      "nodes_x": "ba5e9b1a63933a58633dfada59a7702ee1859b3c61883a80b7871f9fca65ef70",
+      "hx": "ef5570a84ac11dc333cc814f012de4456a36557648ea27a1d0e0715999f0c998",
+      "nodes_y": "55f5f37e96af4e353a5ba31867d1aeade0e6decc6a86766d1d84dd4a664155ac",
+      "hy": "14415299d4c0b94785fc5065f840ba1795feb2dc6e6f69e74b3dacd2721b9de9",
+      "nodes_z": "f76551d7e167b1c842bd65088f96c4a1a964b92b30cd3dc67418dd09bf1a9af4",
+      "hz": "b33e0b113cd6ed5b245d3ae766953ee64ae13f1d33d3b3e81f048cd53611d236",
+      "sigma": "4fc63e603a2dac8271f0292fd40de7f10e6eff39baac64592e7d06c682c60c64"
+    }
+  }
+}

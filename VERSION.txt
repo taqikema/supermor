@@ -1,0 +1,7 @@
+Status: directory scaffold and packaging plan; not an executable release.
+Source repository commit: 016d934cd4ae7411db5e579cb11ba22bce2ac296
+Prepared on: 2026-11-01 (Asia/Shanghai)
+Release version and archive DOI: not assigned.
+Only the license text is copied from the source package at this stage.
+Source repository path: /home/taqikema/projects/custEM
+Release directory: /home/taqikema/projects/supermor
