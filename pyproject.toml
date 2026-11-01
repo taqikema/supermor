@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "supermor"
+version = "0.1.0.dev0"
+description = "Independent P1/P2 CSEM paper solvers extending unmodified custEM"
+readme = "README.txt"
+requires-python = ">=3.11"
+license = {file = "LICENSE.rst"}
+dependencies = [
+    "custEM @ git+https://gitlab.com/Rochlitz.R/custEM.git@be0ef8729761a7eae32ababc8b362514d84f5f0a",
+    "comet @ git+https://gitlab.com/Skibbe/comet.git@53e094f535b6fa67e5f55ef730233771c5d034a8",
+    "psutil",
+    "numpy<2",
+    "scipy",
+    "mpi4py",
+    "petsc4py",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools.packages.find]
+where = ["core"]
+include = ["supermor", "supermor.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

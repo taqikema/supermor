@@ -4,3 +4,7 @@
 !/outputs/**/.gitkeep
 __pycache__/
 *.pyc
+/build/
+/dist/
+/core/*.egg-info/
+.pytest_cache/
