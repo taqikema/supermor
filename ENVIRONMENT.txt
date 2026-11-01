@@ -1,32 +1,82 @@
-SUPERMOR paper release: environment information to complete
-=========================================================
+SUPERMOR independent core: verified numerical environment
+========================================================
 
-Status
-------
-This is a packaging checklist, not a tested environment lock. No scientific
-software has been installed or simulated while creating this scaffold.
-The repository's historical custEM/yaml.yml must not be presented as the
-verified environment used for the current paper without checking it.
+Environment reconstruction
+--------------------------
+The root environment.yml is the installation entry point. It pins Conda
+package versions and builds for linux-64, plus official COMET/custEM Git
+commits and the small Python runtime dependency set in its pip section.
+After creating and activating it, install this repository with:
 
-Numerical environment
----------------------
-Record the actual OS, Python, compiler and MPI versions from the environment
-used to validate the release. The existing solver uses legacy FEniCS/DOLFIN,
-not DOLFINx. Record the DOLFIN, UFL, FFC and dijitso versions together.
+  conda env create -f environment.yml
+  conda activate supermor
+  python -m pip install --no-deps --no-build-isolation .
 
-The environment must provide matched MPI, mpi4py, PETSc and petsc4py builds;
-PETSc must use the real-scalar configuration required by the existing block
-formulation, and provide HYPRE/AMS and MUMPS. Record their versions, integer
-width, BLAS/LAPACK backend and the installation commands or environment
-export used successfully. Preserve pyGIMLi if the packaged custEM loaders
-still import it, even when generated meshes are supplied.
+The original independent-package migration used a separate environment
+reconstructed from 377 exact Conda artifact records. That explicit URL and
+checksum format has been archived outside the repository and replaced by
+the root YAML recipe. CORE_VALIDATION.json distinguishes the migration
+checks from the YAML reconstruction and records completed results. Conda
+may reuse its download cache; a fresh environment does not establish a
+cold-cache network reconstruction. The existing cust_env is not modified.
+No installed environment is bundled.
 
-requirements.txt lists candidate Python dependencies only. Installing it
-alone does not install or verify the numerical stack. Lock versions from
-the tested environment, without replacing ABI-coupled packages blindly.
-If meshes are generated rather than supplied, also document the matching
-TetGen/pyGIMLi versions and any DOLFIN refinement steps. These generation
-dependencies are optional when the final runtime does not import them.
+Official custEM commit: be0ef8729761a7eae32ababc8b362514d84f5f0a
+Official COMET commit: 53e094f535b6fa67e5f55ef730233771c5d034a8
+COMET is needed by the upstream profiler's import even when profiling is off.
+Both packages are external and unmodified. Installed upstream Python files
+were compared with the official checkout. CORE_VALIDATION.json records the
+completed source, installed-wheel, MPI and numerical checks.
+
+Observed versions, 2026-11-01 (Asia/Shanghai)
+-------------------------------------------
+OS: Linux x86_64 / WSL2, glibc 2.39
+Python: 3.11.9
+DOLFIN: 2019.1.0 (legacy FEniCS, not DOLFINx)
+PETSc: 3.20.6, real float64; HYPRE/AMS and MUMPS enabled
+petsc4py: 3.20.5
+MPI: MPICH 4.2.3; use the activated environment's mpiexec
+mpi4py: 3.1.6
+NumPy: 1.26.4
+SciPy: 1.17.1
+h5py: 3.13.0
+pyGIMLi: 1.5.0
+pytest: 9.1.1
+Conda package versions/builds and pinned Python/upstream packages:
+  environment.yml
+The YAML specifies versions/builds, not artifact checksums.
+
+Rebuild and validation
+----------------------
+Run the installation and test commands in the root README.txt. Activate the new
+Conda environment (or use conda run); invoking its Python alone does not set
+the pkg-config/compiler paths required by DOLFIN JIT. Use one BLAS/OpenMP
+thread per MPI rank for the recorded tests. Keep PYTHONPATH free of old
+research custEM checkouts. Default source tests load only core/supermor;
+SUPERMOR_TEST_INSTALLED=1 tests the installed wheel from outside the repo.
+
+The YAML recipe is specific to linux-64 and intentionally retains the
+compatible numerical/compiler/rendering stack. It is not a minimal plotting
+environment or a portable lock for other operating systems. A venv and the
+root requirements.txt alone cannot supply the ABI-matched numerical stack.
+That requirements file lists candidate future plotting/data packages only;
+the implemented core uses pyproject.toml plus environment.yml.
+
+Small-model acceptance
+----------------------
+Serial and MPI2 execute independent UFL/dense reference checks for P1/P2,
+scalar/VTI, real official MOD/H5 construction, source/receiver operators and
+solver failure handling. Actual original-equation residual <=1.01e-6;
+independent reference/DFOM residual <1e-10; mass-norm and E/H errors <1e-3.
+At fixed MPI size, old/new fields and E/H must agree within relative L2
+1e-10 plus absolute 1e-12 and retain algorithm summaries. Across MPI sizes,
+compare physical E/H only at relative L2 1e-4 plus absolute 1e-12.
+
+P1 supports all four methods. P2 supports SUPERMOR residual_mr without
+residual correction; DFOM/RK are retained at the operator interface only.
+P2 IFOM and P2 chain/correction are explicitly unsupported. VTI assignment
+must follow upstream build_var_form, never precede a subsequent rebuild.
+Core validation does not certify the large paper cases or timing/memory.
 
 Drawing environment
 -------------------
@@ -57,6 +107,7 @@ Document numerical acceptance thresholds and the expected output shapes.
 
 Before publication
 ------------------
-Replace this checklist with tested commands and an exact environment
-export or container recipe. Verify imports and one small solver case,
-then validate the intended full-case and redraw routes as resources allow.
+The core has a version/build-pinned platform-specific recipe and verification
+records in CORE_VALIDATION.json.
+The full-case and redraw routes still require their own input recovery,
+execution and resource checks before a complete paper release.

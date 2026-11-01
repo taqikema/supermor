@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-11-01T21:39:53.756652+08:00",
+  "status": "independent_core_migration_verified",
+  "package": {
+    "name": "supermor",
+    "version": "0.1.0.dev0",
+    "python_modules": 7,
+    "bundles_custem": false,
+    "bundles_upstream_version_file": false
+  },
+  "research_source_commit": "016d934cd4ae7411db5e579cb11ba22bce2ac296",
+  "official_custem_commit": "be0ef8729761a7eae32ababc8b362514d84f5f0a",
+  "scope": {
+    "p1_operator_and_model_methods": [
+      "DFOM",
+      "IFOM",
+      "RK",
+      "SUPERMOR"
+    ],
+    "p2_operator_methods": [
+      "DFOM",
+      "RK",
+      "SUPERMOR"
+    ],
+    "p2_model_methods": [
+      "SUPERMOR"
+    ],
+    "p2_formulations": [
+      "split_u",
+      "total_field"
+    ],
+    "p2_basis_strategy": "residual_mr",
+    "explicitly_unsupported": [
+      "P2 IFOM",
+      "P2 chain",
+      "P2 residual correction"
+    ]
+  },
+  "tests": {
+    "legacy_serial": {
+      "passed_per_rank": [
+        72
+      ],
+      "seconds_per_rank": [
+        4.11
+      ],
+      "log": "outputs/core_validation/baseline-serial.log",
+      "log_sha256": "e0d96db00230ddbf3d515c4dbfc1cc2996563ad68f71c1724e06a40acab0b8d3"
+    },
+    "legacy_mpi2": {
+      "passed_per_rank": [
+        72,
+        72
+      ],
+      "seconds_per_rank": [
+        6.66,
+        6.62
+      ],
+      "log": "outputs/core_validation/baseline-mpi2.log",
+      "log_sha256": "1dcdca9c408dff9e034440bc3b88bc825a8de11185d2391224ebfedae1a69297"
+    },
+    "source_serial": {
+      "passed_per_rank": [
+        125
+      ],
+      "seconds_per_rank": [
+        9.56
+      ],
+      "log": "outputs/core_validation/source-serial.log",
+      "log_sha256": "ac5244486f334f1ec198125515dacb691b3c616112acdea1d0e4d7cea5eb949f"
+    },
+    "source_mpi2": {
+      "passed_per_rank": [
+        125,
+        125
+      ],
+      "seconds_per_rank": [
+        15.58,
+        15.58
+      ],
+      "log": "outputs/core_validation/source-mpi2.log",
+      "log_sha256": "e99864b85cc0355a903d1cc72f402db68e8c874f99b07227f497ac76b9d97981"
+    },
+    "installed_serial": {
+      "passed_per_rank": [
+        125
+      ],
+      "seconds_per_rank": [
+        295.5
+      ],
+      "log": "outputs/environment_yaml_validation/installed-serial.log",
+      "log_sha256": "0b904ac479d98e2157273048d3bedd79d18d37037abe17dcf0b21de0b2ff4aff",
+      "validation_environment": "fresh environment.yml reconstruction; installed wheel from /tmp; PYTHONPATH cleared"
+    },
+    "installed_mpi2": {
+      "passed_per_rank": [
+        125,
+        125
+      ],
+      "seconds_per_rank": [
+        303.61,
+        303.73
+      ],
+      "log": "outputs/environment_yaml_validation/installed-mpi2.log",
+      "log_sha256": "fb1ec77b4d7d44f39ff74f7f04a7f77a87440b25a70b57b713a48aacc7f97a12",
+      "validation_environment": "fresh environment.yml reconstruction; installed wheel from /tmp; PYTHONPATH cleared"
+    }
+  },
+  "comparisons": {
+    "same_mpi_serial": {
+      "accepted": true,
+      "rtol": 1e-10,
+      "atol": 1e-12,
+      "arrays": 42,
+      "maximum_relative_l2": 0.0
+    },
+    "same_mpi_two_ranks": {
+      "accepted": true,
+      "rtol": 1e-10,
+      "atol": 1e-12,
+      "arrays": 42,
+      "maximum_relative_l2": 2.167233644469853e-14
+    },
+    "cross_mpi_receivers": {
+      "accepted": true,
+      "rtol": 0.0001,
+      "atol": 1e-12,
+      "arrays": 28,
+      "maximum_relative_l2": 1.9453961332268048e-07
+    }
+  },
+  "comparison_cases": {
+    "combinations": 14,
+    "degrees": [
+      1,
+      2
+    ],
+    "materials": [
+      "scalar",
+      "native DG0 VTI"
+    ],
+    "frequencies_hz": [
+      0.1,
+      1.0,
+      100.0
+    ],
+    "same_mpi_fields_and_receivers": true,
+    "cross_mpi_receivers_only": true,
+    "algorithm_summaries_match_at_fixed_mpi": true
+  },
+  "acceptance": {
+    "original_equation_relative_residual_max": 1.01e-06,
+    "independent_reference_and_tiny_dfom_residual_less_than": 1e-10,
+    "mass_norm_relative_error_less_than": 0.001,
+    "receiver_relative_error_less_than": 0.001,
+    "same_mpi_relative_l2": 1e-10,
+    "cross_mpi_receiver_relative_l2": 0.0001,
+    "absolute_l2": 1e-12,
+    "tolerances_relaxed": false
+  },
+  "kernel_preservation": {
+    "operators.py_unchanged": true,
+    "materials.py_unchanged": true,
+    "mor_high_order.py_unchanged": true,
+    "mor_numerical_body_unchanged": true
+  },
+  "integrity": {
+    "official_checkout_files_unchanged": 111,
+    "official_checkout_status": "",
+    "installed_upstream_files_compared": 62,
+    "installed_upstream_mismatches": [],
+    "reference_conda_package_records_unchanged": 377,
+    "reference_environment_check": "SHA256 of all 377 original Conda metadata JSON files before/after"
+  },
+  "environment": {
+    "environment_creation": "conda env create -f environment.yml; new prefix; Conda download caches may be reused",
+    "python": "3.11.9",
+    "platform": "Linux-6.18.54.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "versions": {
+      "supermor": "0.1.0.dev0",
+      "custEM": "1.7.0",
+      "comet": "1.1.2",
+      "numpy": "1.26.4",
+      "scipy": "1.17.1",
+      "petsc4py": "3.20.5",
+      "mpi4py": "3.1.6",
+      "h5py": "3.13.0",
+      "pygimli": "1.5.0",
+      "pytest": "9.1.1",
+      "pip": "26.2.1",
+      "setuptools": "84.0.0",
+      "wheel": "0.48.0"
+    },
+    "dolfin": "2019.1.0",
+    "petsc": "3.20.6",
+    "petsc_scalar_type": "float64",
+    "hypre_enabled": true,
+    "mumps_enabled": true,
+    "mpi": "MPICH Version:      4.2.3"
+  },
+  "environment_locks": {
+    "environment.yml": "0a3eccabacaaa0d027e0ea6f4716154f01bfdfe8db1db0ddb4ccef8e23624fbe"
+  },
+  "wheel": {
+    "wheel": "/home/taqikema/projects/.custem-git-backups/supermor-yaml-20261101-jvtrg47v/wheels/supermor-0.1.0.dev0-py3-none-any.whl",
+    "sha256": "191322d86e48979a06a610c6e29e6a25da28bb3d15880013b923c5b4c1ce8b90",
+    "modules": [
+      "supermor/__init__.py",
+      "supermor/full_order.py",
+      "supermor/materials.py",
+      "supermor/methods.py",
+      "supermor/mor.py",
+      "supermor/mor_high_order.py",
+      "supermor/operators.py"
+    ],
+    "bundles_custem": false,
+    "source_and_wheel_match": true,
+    "source_module_sha256": {
+      "__init__.py": "5bbfdb2705d108799e7f7079a5c79e75785b548b173a4e3ebd4cd63f55fa2a9b",
+      "full_order.py": "14945f64b602342531e92841329de5fad2616ebd4930edd8795844082af854eb",
+      "materials.py": "c6bfd05bffd731446636b9a377b94d8e180c18c22d28924c18db472b088d7b72",
+      "methods.py": "b10de70e82f0c81c01c82e79068c653e91c91118f717f45b78e754ce87339308",
+      "mor.py": "45a7c011c3fc1fee5c13830d2a9c032a1854c7e11e68e8dd4e576c01858a9528",
+      "mor_high_order.py": "efea189234e06e34a001b9c6ddee6caa433a82cf5b3b991f9dc541ff9ac50b16",
+      "operators.py": "ea6411e7e1fbda87703a798e27cb36ea2076976664429df420e520b14506984e"
+    },
+    "metadata_dependencies": [
+      "custEM @ git+https://gitlab.com/Rochlitz.R/custEM.git@be0ef8729761a7eae32ababc8b362514d84f5f0a",
+      "comet @ git+https://gitlab.com/Skibbe/comet.git@53e094f535b6fa67e5f55ef730233771c5d034a8",
+      "psutil",
+      "numpy<2",
+      "scipy",
+      "mpi4py",
+      "petsc4py",
+      "pytest; extra == \"test\""
+    ],
+    "source_installed_and_wheel_match": true
+  },
+  "backup": {
+    "directory": "/home/taqikema/projects/.custem-git-backups/supermor-independent-20261101-3k41pl51/snapshot",
+    "manifest": "/home/taqikema/projects/.custem-git-backups/supermor-independent-20261101-3k41pl51/snapshot-sha256.json",
+    "tracked_working_tree_patch": "/home/taqikema/projects/.custem-git-backups/supermor-independent-20261101-3k41pl51/working-tree.patch",
+    "old_directories_verified_identical_before_removal": true
+  },
+  "local_artifacts": "outputs/core_validation (generated, Git-ignored)",
+  "source_files_sha256": {
+    "/home/taqikema/projects/supermor/core/supermor/__init__.py": "5bbfdb2705d108799e7f7079a5c79e75785b548b173a4e3ebd4cd63f55fa2a9b",
+    "/home/taqikema/projects/supermor/core/supermor/full_order.py": "14945f64b602342531e92841329de5fad2616ebd4930edd8795844082af854eb",
+    "/home/taqikema/projects/supermor/core/supermor/materials.py": "c6bfd05bffd731446636b9a377b94d8e180c18c22d28924c18db472b088d7b72",
+    "/home/taqikema/projects/supermor/core/supermor/methods.py": "b10de70e82f0c81c01c82e79068c653e91c91118f717f45b78e754ce87339308",
+    "/home/taqikema/projects/supermor/core/supermor/mor.py": "45a7c011c3fc1fee5c13830d2a9c032a1854c7e11e68e8dd4e576c01858a9528",
+    "/home/taqikema/projects/supermor/core/supermor/mor_high_order.py": "efea189234e06e34a001b9c6ddee6caa433a82cf5b3b991f9dc541ff9ac50b16",
+    "/home/taqikema/projects/supermor/core/supermor/operators.py": "ea6411e7e1fbda87703a798e27cb36ea2076976664429df420e520b14506984e"
+  },
+  "limitations": [
+    "No paper-scale case reruns or timing/memory reproduction.",
+    "Formal sphere and MR3D meshes and remaining paper case/figure entries still need recovery and validation.",
+    "Conda YAML recipe is linux-64 specific and pins versions/builds, not artifact checksums; download caches may have been reused."
+  ],
+  "environment_specification": {
+    "file": "environment.yml",
+    "format": "standard Conda environment YAML; exact versions/builds plus pinned pip repositories",
+    "platform": "linux-64",
+    "conda_packages": 377,
+    "pip_dependencies": 3,
+    "matches_previous_conda_versions_and_builds": true,
+    "artifact_checksums_locked": false
+  },
+  "official_dependency_sources": {
+    "custEM": {
+      "url": "https://gitlab.com/Rochlitz.R/custEM.git",
+      "vcs_info": {
+        "commit_id": "be0ef8729761a7eae32ababc8b362514d84f5f0a",
+        "requested_revision": "be0ef8729761a7eae32ababc8b362514d84f5f0a",
+        "vcs": "git"
+      }
+    },
+    "comet": {
+      "url": "https://gitlab.com/Skibbe/comet.git",
+      "vcs_info": {
+        "commit_id": "53e094f535b6fa67e5f55ef730233771c5d034a8",
+        "requested_revision": "53e094f535b6fa67e5f55ef730233771c5d034a8",
+        "vcs": "git"
+      }
+    }
+  },
+  "environment_reorganization": {
+    "previous_configuration_snapshot": "/home/taqikema/projects/.custem-git-backups/supermor-yaml-20261101-jvtrg47v/snapshot",
+    "previous_validation_report_sha256": "b32ef3e37502fe072183086b3badf81a3ab073a65bb2cc3ab4b8536450bb0320",
+    "fresh_environment_prefix": "/home/taqikema/projects/.custem-git-backups/supermor-yaml-20261101-jvtrg47v/environment",
+    "command": "conda env create -f environment.yml (with external validation prefix)",
+    "installed_tests": {
+      "installed_serial": {
+        "passed_per_rank": [
+          125
+        ],
+        "seconds_per_rank": [
+          295.5
+        ],
+        "log": "outputs/environment_yaml_validation/installed-serial.log",
+        "log_sha256": "0b904ac479d98e2157273048d3bedd79d18d37037abe17dcf0b21de0b2ff4aff",
+        "validation_environment": "fresh environment.yml reconstruction; installed wheel from /tmp; PYTHONPATH cleared"
+      },
+      "installed_mpi2": {
+        "passed_per_rank": [
+          125,
+          125
+        ],
+        "seconds_per_rank": [
+          303.61,
+          303.73
+        ],
+        "log": "outputs/environment_yaml_validation/installed-mpi2.log",
+        "log_sha256": "fb1ec77b4d7d44f39ff74f7f04a7f77a87440b25a70b57b713a48aacc7f97a12",
+        "validation_environment": "fresh environment.yml reconstruction; installed wheel from /tmp; PYTHONPATH cleared"
+      }
+    },
+    "old_directory_removed_after_reconstruction_and_tests": true,
+    "previous_source_test_results_retained": true,
+    "creation_log": "outputs/environment_yaml_validation/rebuild.log"
+  }
+}

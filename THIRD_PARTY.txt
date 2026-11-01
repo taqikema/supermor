@@ -3,10 +3,21 @@ Known source and input attribution for the planned release
 
 custEM
 ------
-The release is based on the custEM source in the sibling ../custEM/ repository. Its
-existing LGPLv3/GPL license text is copied unchanged into LICENSE.rst.
-Retain the package's original author and copyright notices when copying
-source into core/. The source commit is recorded in VERSION.txt.
+The research kernels were developed in the sibling custEM research repository
+at commit 016d934cd4ae7411db5e579cb11ba22bce2ac296, then extracted into the
+independent supermor package. The existing LGPLv3/GPL license text remains
+in LICENSE.rst. Preserve applicable original author/copyright notices.
+No upstream custEM source is bundled; the official unmodified dependency is
+https://gitlab.com/Rochlitz.R/custEM.git at commit
+be0ef8729761a7eae32ababc8b362514d84f5f0a (custEM 1.7.0).
+The copied upstream VERSION.rst and framework modules have been removed.
+SUPERMOR's own package version is defined in pyproject.toml.
+
+COMET
+-----
+Official custEM imports COMET through its profiler even when profiling is off.
+The external, unmodified COMET dependency is pinned in environment.yml;
+its source is not bundled in the SUPERMOR distribution.
 
 MR3D
 ----
