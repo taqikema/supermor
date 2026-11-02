@@ -59,7 +59,7 @@ The YAML recipe is specific to linux-64 and intentionally retains the
 compatible numerical/compiler/rendering stack. It is not a minimal plotting
 environment or a portable lock for other operating systems. A venv and the
 root requirements.txt alone cannot supply the ABI-matched numerical stack.
-That requirements file lists candidate future plotting/data packages only;
+That requirements file lists plotting/data packages;
 the implemented core uses pyproject.toml plus environment.yml.
 
 Small-model acceptance
@@ -90,18 +90,25 @@ solver reconstruction in CORE_VALIDATION.json.
 
 Drawing environment
 -------------------
-Figures using sumor_paper_figure_style.py require Times New Roman. Set
-SUMOR_PAPER_FONT_DIR to an available font directory, or explicitly document
-any supported substitution. The block cross-validation plotter separately
-preserves its supplied DejaVu Sans layout. The VTK
-survey renderer also needs portable font/path settings and an appropriate
-headless or display-backed rendering environment. Do not assume the
-original /mnt/c/Windows/Fonts or /mnt/d paths exist on a reader's system.
+The figure migration reuses the existing WSL cust_env without installing
+packages. Observed plotting versions on 2026-11-02: NumPy 1.26.4,
+Matplotlib 3.8.4, Pillow 10.3.0, VTK 9.3.0, segyio 1.9.14, pytest 9.1.1.
+requirements.txt lists plotting/data dependencies; the plotting checks do
+not reconstruct an environment. In particular, segyio must be available
+for the full-SEG-Y figure-11 route. Completed redraw checks and their limits
+are summarized in the root README; detailed migration audits are archived
+outside the source release.
 
-Figure 7 uses VTK, Pillow and a complete VTM scene with its referenced
-VTU/VTP files. Figure 11 currently uses segyio and source SEG-Y files;
-providing a frozen section.npz and a dedicated section plotter can remove
-that dependency from the redraw-only route after the new entry is tested.
+Times New Roman is required by the shared style; set SUMOR_PAPER_FONT_DIR
+for its directory when necessary. Figures 2-4 preserve DejaVu Sans. System
+font files are not distributed. VTK needs a working offscreen EGL/OpenGL
+backend. Runtime paths resolve within this checkout or explicit CLI paths.
+Figure 7 needs its complete eight-file VTK scene and no original PNG.
+Figure 11 reads the two full original SEG-Y files from data/raw_data/
+case3_mr3d and the existing mesh-data survey. No exported section NPZ is used.
+Run plotting with MPLBACKEND=Agg, PYTHONDONTWRITEBYTECODE=1, and caches under
+/tmp, using the commands in the root README. Numerical environment guards
+are deliberately excluded from focused plotting-only pytest runs.
 
 Hardware and measurements
 -------------------------
@@ -119,8 +126,8 @@ Before publication
 ------------------
 The core has a version/build-pinned platform-specific recipe and verification
 records in CORE_VALIDATION.json.
-The full-case and redraw routes still require their own input recovery,
-execution and resource checks before a complete paper release.
+The remaining full-case campaigns require their own execution and resource
+checks. The root README summarizes the separate completed redraw checks.
 
 Numerical run migration, 2026-11-02
 ---------------------------------
@@ -149,3 +156,12 @@ imports, formal MPI launch commands, and MPI Abort on uncaught DFOM errors.
 MR3D source hashing also passed with the direct core.materials import.
 No full numerical paper case was rerun for this wrapper-only consolidation.
 RUNS_VALIDATION.json retains the earlier dual-pole numerical record separately.
+
+Paper figure migration, 2026-11-02
+---------------------------------
+Reused cust_env without installing packages. All 12 old/new decoded PNG
+comparisons have maximum channel difference 0; figure-11 section arrays
+are exactly equal. Focused plotting regression: 37 passed in 3.00 seconds.
+These checks cover drawing and new-run input adapters, separately from
+numerical solver regressions. Existing Matplotlib/pyparsing deprecation
+warnings do not affect the recorded comparisons.

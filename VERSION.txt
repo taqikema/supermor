@@ -1,4 +1,4 @@
-Status: independent core, mesh and numerical-run migration; figure content pending.
+Status: independent core, mesh, numerical-run and paper-figure migration.
 Package version: defined only in pyproject.toml.
 Research source commit: 016d934cd4ae7411db5e579cb11ba22bce2ac296
 Official custEM dependency commit: be0ef8729761a7eae32ababc8b362514d84f5f0a
@@ -26,3 +26,10 @@ MR3D numerical worker SHA-256 across these batches:
 Portable measurement profiles: batch_r03, fat09, later; the portable monitor
   does not claim byte identity or identical performance with historical monitors.
 Detailed original-file/migration hash audit: archived outside this checkout.
+
+Figures: nine entries cover main figures 1-12. Migration source hashes and
+  detailed checks are archived outside this checkout; the README summarizes
+  completed redraw and regression validation.
+Drawing data: frozen paper inputs under outputs/<case>/<experiment>/paper/;
+  complete MR3D SEG-Y volumes under data/raw_data/case3_mr3d/. Both are local
+  data excluded from Git. Generated figures are beside each drawing script.

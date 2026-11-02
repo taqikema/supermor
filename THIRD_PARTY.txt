@@ -56,3 +56,16 @@ Authors' newly published data
 No new data license is selected by this scaffold. Before release, state the
 license for authors' own mesh/plotting datasets and preserve any applicable
 third-party conditions. This note does not replace that final declaration.
+
+Paper figure inputs, 2026-11-02
+-------------------------------
+The authors' small figure-1 model JSON is a Git input under data/figure_data.
+The complete figure-7 display scene is present locally under the same data
+tree, excluded from Git and intended for the separate dataset archive.
+No historical reference PNG is bundled.
+Frozen result inputs are copied locally under outputs and excluded from Git.
+Figure 11 uses the original Horizontal_resistivity.sgy and
+Vertical_Resistivity.sgy files under data/raw_data/case3_mr3d (also excluded
+from Git), with the MR3D source attribution above. Local source metadata
+and the external migration archive preserve provenance/hashes; no new data
+license is assigned by those records.
