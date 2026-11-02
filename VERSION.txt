@@ -1,4 +1,4 @@
-Status: independent core migration; full paper release still pending.
+Status: independent core and mesh-generation migration; runs/figures still pending.
 Package version: defined only in pyproject.toml.
 Research source commit: 016d934cd4ae7411db5e579cb11ba22bce2ac296
 Official custEM dependency commit: be0ef8729761a7eae32ababc8b362514d84f5f0a
@@ -6,6 +6,8 @@ Prepared on: 2026-11-01 (Asia/Shanghai)
 Release version/tag and archive DOI: not assigned.
 Contents: independent P1 four-method/P2 extension; no bundled custEM sources.
 Validation: exact completed results and source hashes in CORE_VALIDATION.json.
+Mesh layout: generators in mesh_gen/; inputs and outputs in data/mesh_data/.
+Mesh migration and current input/output checks: MESH_VALIDATION.json.
 The original source snapshot and old numerical baselines were saved outside
 this repository before migration. Numerical defaults and PETSc prefixes are
 preserved; official custEM and the reference environment remain unmodified.

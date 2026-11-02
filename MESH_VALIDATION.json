@@ -1,0 +1,1555 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-11-02T00:11:53.375066+08:00",
+  "status": "mesh_generation_and_data_layout_migrated_and_verified",
+  "layout": {
+    "code": "mesh_gen/",
+    "data": "data/mesh_data/",
+    "runtime_paths": "mesh_gen.paths.get_mesh; runs.common.mesh_inputs.get_mesh"
+  },
+  "git_policy": {
+    "release_inputs_included_by_gitignore_policy": [
+      "data/mesh_data/case2_layered_sphere/inputs/sphere_surface_template.npz",
+      "data/mesh_data/case3_mr3d/prepared/manifest.json",
+      "data/mesh_data/case3_mr3d/prepared/survey.npz"
+    ],
+    "large_inputs_and_generated_artifacts_ignored": true,
+    "zenodo_DOI_assigned": false,
+    "git_index_updated": false
+  },
+  "independent_inputs": [
+    {
+      "path": "data/mesh_data/case2_layered_sphere/inputs/sphere_surface_template.npz",
+      "bytes": 46636,
+      "sha256": "e3c89521b6cceb8c1c48641da8bcb5a57d2fabc4d04a247ff5a9fded15c295b5",
+      "git_release_input": true
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/interfaces/Base_of_salt-mr3d_reverted.xyz",
+      "bytes": 12422040,
+      "sha256": "c77d5ba67e3fffa9075d46f17d3097864cceab6f4c394432c1f5a2533a85f57d",
+      "git_release_input": false
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/interfaces/Blue_mark-mr3d_reverted.xyz",
+      "bytes": 12423585,
+      "sha256": "a38048e33ed982134b6d32c0bde4c68e55cfbee5be1be402acc922bd47e063f2",
+      "git_release_input": false
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/interfaces/Miocene-mr3d_reverted.xyz",
+      "bytes": 12426624,
+      "sha256": "df87fc334815491d0f9a2e155c9f4054d961c83f536ae5b56fb1aae3ce1a7947",
+      "git_release_input": false
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/interfaces/Oligocene-mr3d_reverted.xyz",
+      "bytes": 12424118,
+      "sha256": "b210e5a51e12984e553116d5609d93e845bc578bf5e64ad44df9fb271a31e168",
+      "git_release_input": false
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/interfaces/Sea_Bottom-mr3d_reverted.xyz",
+      "bytes": 12424530,
+      "sha256": "ebd49c1e122a24625f2a2bf4ae5002abb9203e770b309dc4981ea27dad34e18c",
+      "git_release_input": false
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/interfaces/Top_of_Salt-mr3d_reverted.xyz",
+      "bytes": 12423482,
+      "sha256": "c924cd4cb96238d096e356b48a3ea733f9441ca84357d0ade54c1c403cf1b8a0",
+      "git_release_input": false
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/manifest.json",
+      "bytes": 1752,
+      "sha256": "eb38544d00f33e5ecc268a2e9c8b658cde30402e09b49732f6f63f8fac7b4fdd",
+      "git_release_input": true
+    },
+    {
+      "path": "data/mesh_data/case3_mr3d/prepared/survey.npz",
+      "bytes": 11294,
+      "sha256": "0b22f4051cded9a139875e62a58c1b6c7b0401ee2ee6c2da5bab49793755f14c",
+      "git_release_input": true
+    }
+  ],
+  "code_files": [
+    {
+      "path": "mesh_gen/__init__.py",
+      "bytes": 167,
+      "sha256": "7d52b35ed815fdb9023e5531aaddb8f872f5ecfeefa7e55bf126b654f8cd1403"
+    },
+    {
+      "path": "mesh_gen/case1_block/cross_validation/emg3d_worker.py",
+      "bytes": 13367,
+      "sha256": "35b05cc67bae80a66ac11efc11787c66f26c5792352d636d71bf1ed28b448532"
+    },
+    {
+      "path": "mesh_gen/case1_block/cross_validation/mesh_custem.py",
+      "bytes": 17440,
+      "sha256": "be76bd6c0df79b7496b578ea38ff375972a13266d9598d561b6482cda9b1547f"
+    },
+    {
+      "path": "mesh_gen/case1_block/cross_validation/refine_receiver_mesh.py",
+      "bytes": 8866,
+      "sha256": "c33f8a0d7265a48c46c20de6055887d43cb7381162c4f849e856c133ab82b022"
+    },
+    {
+      "path": "mesh_gen/case1_block/cross_validation/validation_common.py",
+      "bytes": 4969,
+      "sha256": "a3ee75d06a45fcd5124e3a28ef59bbb3a664a6b2e5c34144dafa48baa4ead9b7"
+    },
+    {
+      "path": "mesh_gen/case1_block/strategy/mesh_strategy.py",
+      "bytes": 16597,
+      "sha256": "1be4d4e2925cedb2dbe1de70b8cb8e7eeb06595c1ea4a3ad1fb2796ac8fb93fb"
+    },
+    {
+      "path": "mesh_gen/case1_block/strategy/strategy_contract.py",
+      "bytes": 3360,
+      "sha256": "1546189eeef5b0b4c885459879d8aa4265e7632ebec558a995c28e67fac1a52d"
+    },
+    {
+      "path": "mesh_gen/case2_layered_sphere/build_terrain_mesh_sensitivity.py",
+      "bytes": 21789,
+      "sha256": "40792cfb7ab6b4c8400e6744b7f2258fff2d4206851e20b501f51ebc50b50fd4"
+    },
+    {
+      "path": "mesh_gen/case2_layered_sphere/refine_terrain_rx_earth_star_dolfin.py",
+      "bytes": 14328,
+      "sha256": "508502ec46ab2ea44b3d596899d809e73828c391050eb48bf898fe25395df427"
+    },
+    {
+      "path": "mesh_gen/case2_layered_sphere/refine_terrain_rx_star.py",
+      "bytes": 19764,
+      "sha256": "fc90e2781b426943f2f437c921847d17b1a292ef426e44d7d0e7ac34d5517920"
+    },
+    {
+      "path": "mesh_gen/case2_layered_sphere/refine_terrain_rx_star_dolfin.py",
+      "bytes": 11368,
+      "sha256": "6f2b10eb54edc1fe516459c48074a865f553472e9472b060c496a0c8239e5f95"
+    },
+    {
+      "path": "mesh_gen/case3_mr3d/experiments/mr3d_custem/mesh.py",
+      "bytes": 13732,
+      "sha256": "ec94fcdc0e073b8fe67ac96b57859c7d3bbec98ed94a71697cd403f2893b979b"
+    },
+    {
+      "path": "mesh_gen/case3_mr3d/experiments/mr3d_custem/mr3d.py",
+      "bytes": 5336,
+      "sha256": "9d21069dc3c9d995b3e959be3b96d429016b0192c77a6ef780dd309117c2fd29"
+    },
+    {
+      "path": "mesh_gen/case3_mr3d/experiments/mr3d_custem/prepare.py",
+      "bytes": 18225,
+      "sha256": "cff601dfd2803bac7089314365e41f3038168d31cc1354630565e3b1a4fe75d6"
+    },
+    {
+      "path": "mesh_gen/generate.py",
+      "bytes": 6832,
+      "sha256": "283aca7493269cd82d042907dfc97c8be4d839e1173df6e9642cda9f54a45d02"
+    },
+    {
+      "path": "mesh_gen/paths.py",
+      "bytes": 3959,
+      "sha256": "7daee45630d01849cf44664ec317a555d4a5f1d98f9c6df89f895ebd70dc96e4"
+    },
+    {
+      "path": "mesh_gen/verify.py",
+      "bytes": 3954,
+      "sha256": "bd583aeb3f2691b35de6b84cca013ad3da16bf9537c74778b463ba38e8a918b9"
+    }
+  ],
+  "data_inventory": {
+    "files": 113,
+    "bytes": 3655616611,
+    "copied_verified_artifacts": [
+      {
+        "name": "block_cross",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "da4db495a2f4b50902316434ea35e9fc0f4dff76a5a4181c8d22d816dffefc46",
+        "parameters_sha256": "6f0b7eec44d8356ecb47c627795ce7ad266b7f279aeb3a862dc5ff6d3f3fa9bf",
+        "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_cross_final/meshes/custem_L2/_h5/custem_L2.h5"
+      },
+      {
+        "name": "block_emg3d",
+        "arrays_copy_sha256_equal": true,
+        "arrays_sha256": "4540f1ebd2dac815d5db64b9ab7d523d653e3bffc28b6ebd92c320cf62d1bfd7"
+      },
+      {
+        "name": "block_strategy",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "965592476299f4e41954c1c09b0288cb4d191c038800d6c9cdd0ef124e3ce966",
+        "parameters_sha256": "1af98594b51e1c404acf54847ca79ce7dab3806d6660b651c1ed47b3e01ef7f3",
+        "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_strategy/mesh/meshes/_h5/csem_mor.h5"
+      },
+      {
+        "name": "sphere",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "1deb60d53d414bf769cc1545830ba1e3a98f47399131e407204819fd96b5b612",
+        "parameters_sha256": "24c99ba8efe0c1942902df45d1d69477abb47eee255097275b4c205273668b25",
+        "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/sphere/q17_rx_plaza_earth_round_02/meshes/_h5/terrain_sphere.h5"
+      },
+      {
+        "name": "mr3d_M1",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "ee8a13654dfa45adfb3221b51c08772cd03213ecd085bc7fbff16abe9e61924a",
+        "parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/_h5/mr3d_m1_a01.h5"
+      },
+      {
+        "name": "mr3d_M2",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "ea50ba465c07519fd00fd44778ca8b86dfc7ed3dfe811c2b4fc59352fc285eaa",
+        "parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/_h5/mr3d_m2_a01.h5"
+      },
+      {
+        "name": "mr3d_M3",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "6c784094466ad3fa4a587aeacca52d6c61f96d2125aef90ab00bd3d16e824a31",
+        "parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/_h5/mr3d_m3_a01.h5"
+      },
+      {
+        "name": "mr3d_M4",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "9e8e151ea47a49ab1aca809cb8891f289847f0dbed6a3c31fd5918c6fdc87a7c",
+        "parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/_h5/mr3d_m4_a01.h5"
+      },
+      {
+        "name": "mr3d_M5",
+        "H5_copy_sha256_equal": true,
+        "parameters_copy_sha256_equal": true,
+        "mesh_sha256": "786781a8a3589e036141d842026cd238e274a8f16e9279de6fd88b68323f5acb",
+        "parameters_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+        "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/_h5/mr3d_m5_a01.h5"
+      }
+    ]
+  },
+  "mesh_checks": [
+    {
+      "name": "block_cross",
+      "passed": true,
+      "cells": 5256131,
+      "vertices": 869670,
+      "edges": 6126084,
+      "real_P1_dof": 12252168,
+      "mesh_sha256": "da4db495a2f4b50902316434ea35e9fc0f4dff76a5a4181c8d22d816dffefc46",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2/_h5/custem_L2.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2/para/custem_L2_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2/mesh.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2"
+      }
+    },
+    {
+      "name": "block_emg3d",
+      "passed": true,
+      "shape": [
+        128,
+        128,
+        80
+      ],
+      "cells": 1310720,
+      "arrays_sha256": "4540f1ebd2dac815d5db64b9ab7d523d653e3bffc28b6ebd92c320cf62d1bfd7",
+      "receiver_support_sha256": "7c1b5bdbfd7d5384ba461bed4aab4409a0a672719b34754bf77a8113276ef69d",
+      "receiver_support_checked": true,
+      "files": {
+        "arrays": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/axes_sigma.npz",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/mesh.json",
+        "receiver_support": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/receiver_support.npz",
+        "receiver_support_metadata": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/receiver_support.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed"
+      }
+    },
+    {
+      "name": "block_strategy",
+      "passed": true,
+      "cells": 309349,
+      "vertices": 50372,
+      "edges": 360026,
+      "real_P1_dof": 720052,
+      "mesh_sha256": "965592476299f4e41954c1c09b0288cb4d191c038800d6c9cdd0ef124e3ce966",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/meshes/_h5/csem_mor.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/meshes/para/csem_mor_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/mesh.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/meshes"
+      }
+    },
+    {
+      "name": "sphere",
+      "passed": true,
+      "cells": 2519112,
+      "vertices": 428585,
+      "edges": 2952721,
+      "real_P1_dof": 5905442,
+      "mesh_sha256": "1deb60d53d414bf769cc1545830ba1e3a98f47399131e407204819fd96b5b612",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case2_layered_sphere/q17_rx_plaza_earth_round_02/meshes/_h5/terrain_sphere.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case2_layered_sphere/q17_rx_plaza_earth_round_02/meshes/para/terrain_sphere_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case2_layered_sphere/q17_rx_plaza_earth_round_02/mesh.json",
+        "receivers": "/home/taqikema/projects/supermor/data/mesh_data/case2_layered_sphere/q17_rx_plaza_earth_round_02/receivers.csv",
+        "source": "/home/taqikema/projects/supermor/data/mesh_data/case2_layered_sphere/q17_rx_plaza_earth_round_02/source.csv",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case2_layered_sphere/q17_rx_plaza_earth_round_02/meshes"
+      }
+    },
+    {
+      "name": "mr3d_M1",
+      "passed": true,
+      "cells": 385245,
+      "vertices": 63540,
+      "edges": 448995,
+      "real_P1_dof": 897990,
+      "mesh_sha256": "ee8a13654dfa45adfb3221b51c08772cd03213ecd085bc7fbff16abe9e61924a",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/_h5/mr3d_m1_a01.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/manifest.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01",
+        "prepared": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared",
+        "survey": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/survey.npz"
+      }
+    },
+    {
+      "name": "mr3d_M2",
+      "passed": true,
+      "cells": 2168870,
+      "vertices": 351925,
+      "edges": 2521000,
+      "real_P1_dof": 5042000,
+      "mesh_sha256": "ea50ba465c07519fd00fd44778ca8b86dfc7ed3dfe811c2b4fc59352fc285eaa",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/_h5/mr3d_m2_a01.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/manifest.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01",
+        "prepared": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared",
+        "survey": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/survey.npz"
+      }
+    },
+    {
+      "name": "mr3d_M3",
+      "passed": true,
+      "cells": 4780659,
+      "vertices": 774038,
+      "edges": 5554916,
+      "real_P1_dof": 11109832,
+      "mesh_sha256": "6c784094466ad3fa4a587aeacca52d6c61f96d2125aef90ab00bd3d16e824a31",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/_h5/mr3d_m3_a01.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/manifest.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01",
+        "prepared": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared",
+        "survey": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/survey.npz"
+      }
+    },
+    {
+      "name": "mr3d_M4",
+      "passed": true,
+      "cells": 6409790,
+      "vertices": 1037117,
+      "edges": 7447120,
+      "real_P1_dof": 14894240,
+      "mesh_sha256": "9e8e151ea47a49ab1aca809cb8891f289847f0dbed6a3c31fd5918c6fdc87a7c",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/_h5/mr3d_m4_a01.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/manifest.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01",
+        "prepared": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared",
+        "survey": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/survey.npz"
+      }
+    },
+    {
+      "name": "mr3d_M5",
+      "passed": true,
+      "cells": 7877059,
+      "vertices": 1274016,
+      "edges": 9151292,
+      "real_P1_dof": 18302584,
+      "mesh_sha256": "786781a8a3589e036141d842026cd238e274a8f16e9279de6fd88b68323f5acb",
+      "files": {
+        "mesh": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/_h5/mr3d_m5_a01.h5",
+        "parameters": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_parameters.json",
+        "metadata": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/manifest.json",
+        "m_dir": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01",
+        "prepared": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared",
+        "survey": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/survey.npz"
+      }
+    }
+  ],
+  "tests": {
+    "path_and_topology_regressions": {
+      "passed": 15,
+      "command": "python -B -m pytest -q -p no:cacheprovider tests/test_mesh_generation.py",
+      "environment": "Previously reconstructed official custEM environment; reused without installing packages",
+      "log": "/tmp/supermor_mesh_generation_tests_20261102.log"
+    },
+    "all_runtime_meshes": {
+      "passed": 9,
+      "command": "conda run -n cust_env python -B mesh_gen/generate.py all --check",
+      "log": "/tmp/supermor_mesh_migration_validation_20261101_0kmqfusk/logs/all_meshes_check.log"
+    },
+    "fresh_strategy_generation": {
+      "passed": true,
+      "command": "python -B mesh_gen/generate.py block_strategy --data-root <temporary fresh tree>",
+      "environment": "Existing official custEM pinned environment",
+      "reference_comparison": {
+        "reference": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/meshes/_h5/csem_mor.h5",
+        "reference_sha256": "965592476299f4e41954c1c09b0288cb4d191c038800d6c9cdd0ef124e3ce966",
+        "coordinates_same_order_exact": true,
+        "topology_same_order_exact": true,
+        "topology_same_cell_order_ignoring_local_vertex_order": true,
+        "cell_count_equal": true,
+        "vertex_count_equal": true,
+        "coordinates_independent_of_vertex_order_exact": true,
+        "coordinates_independent_of_vertex_order_within_tolerance": true,
+        "coordinate_absolute_tolerance_m": 1e-09,
+        "max_absolute_coordinate_difference_m": 0.0,
+        "canonical_connectivity_equal": true,
+        "canonical_region_labeled_connectivity_equal": true,
+        "canonical_comparison_proof": "Exact vertex coordinates in the same order and identical cell vertex sets in the same cell order."
+      },
+      "parameters_comparison": {
+        "path": "/tmp/supermor_mesh_migration_validation_20261101_0kmqfusk/fresh_data/case1_block/strategy/mesh/meshes/para/csem_mor_parameters.json",
+        "sha256": "22d666d3f3f7f7cbd03c9b32137c4d0c10d0490d27664214c206524111e6d2de",
+        "domains": [
+          0,
+          1,
+          2
+        ],
+        "n_domains": 3,
+        "reference": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/meshes/para/csem_mor_parameters.json",
+        "reference_sha256": "1af98594b51e1c404acf54847ca79ce7dab3806d6660b651c1ed47b3e01ef7f3",
+        "json_values_equal": false,
+        "rx": {
+          "coordinate_count": 3321,
+          "group_sizes": [
+            3321
+          ],
+          "finite": true,
+          "bounds_m": [
+            [
+              1000.0,
+              5000.0
+            ],
+            [
+              -1000.0,
+              1000.0
+            ],
+            [
+              -1.0,
+              -1.0
+            ]
+          ],
+          "first": [
+            1000.0,
+            -1000.0,
+            -1.0
+          ],
+          "last": [
+            5000.0,
+            1000.0,
+            -1.0
+          ],
+          "reference_coordinate_count": 3321,
+          "coordinates_exact": true,
+          "coordinates_within_tolerance": true,
+          "group_sizes_equal": true,
+          "max_absolute_coordinate_difference_m": 0.0
+        },
+        "tx": {
+          "coordinate_count": 21,
+          "group_sizes": [
+            21
+          ],
+          "finite": true,
+          "bounds_m": [
+            [
+              -2500.0,
+              -2000.0
+            ],
+            [
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0
+            ]
+          ],
+          "first": [
+            -2500.0,
+            0.0,
+            0.0
+          ],
+          "last": [
+            -2000.0,
+            0.0,
+            0.0
+          ],
+          "reference_coordinate_count": 21,
+          "coordinates_exact": true,
+          "coordinates_within_tolerance": true,
+          "group_sizes_equal": true,
+          "max_absolute_coordinate_difference_m": 0.0
+        }
+      },
+      "log": "/tmp/supermor_mesh_migration_validation_20261101_0kmqfusk/logs/fresh_strategy.log"
+    },
+    "optional_case_modes": "Regression tests cover --dry-run/--check both with and without an explicit case."
+  },
+  "preservation": {
+    "core_sources_unchanged": true,
+    "case1_numerical_changes": false,
+    "case1_helper_import_normalisation_preserves_build_convert": true,
+    "MR3D_original_mesh_and_prepare_AST_unchanged": true,
+    "sphere_adaptations": [
+      {
+        "file": "mesh_gen/case2_layered_sphere/build_terrain_mesh_sensitivity.py",
+        "source": "/mnt/d/CSU/mesh_scripts_sphere_mr3d_20261101/sphere/build_terrain_mesh_sensitivity.py",
+        "source_sha256": "cf9151d6e99da8c3cdff8385d12c52064ba1e2702f04e703c6291623c6c84314",
+        "published_sha256": "40792cfb7ab6b4c8400e6744b7f2258fff2d4206851e20b501f51ebc50b50fd4",
+        "changed_top_level_functions": [
+          "sphere_surface",
+          "generate"
+        ],
+        "changes": "Template data path, explicit --template override for alternate data roots, and CLI input/output defaults only; geometry, meshing, and Plaza refinement algorithms retained."
+      },
+      {
+        "file": "mesh_gen/case2_layered_sphere/refine_terrain_rx_star.py",
+        "source": "/mnt/d/CSU/mesh_scripts_sphere_mr3d_20261101/sphere/refine_terrain_rx_star.py",
+        "source_sha256": "f28751ece0bd5a03955f2970c7f3dbc492a43df3f94769a1e48a4c0bcd37d89c",
+        "published_sha256": "fc90e2781b426943f2f437c921847d17b1a292ef426e44d7d0e7ac34d5517920",
+        "changed_top_level_functions": [
+          "main"
+        ],
+        "changes": "Template data path and CLI input/output defaults only; geometry, meshing, and Plaza refinement algorithms retained."
+      },
+      {
+        "file": "mesh_gen/case2_layered_sphere/refine_terrain_rx_star_dolfin.py",
+        "source": "/mnt/d/CSU/mesh_scripts_sphere_mr3d_20261101/sphere/refine_terrain_rx_star_dolfin.py",
+        "source_sha256": "81b47e154f6aea9e8e9bb0aabc5f6126af7c2b70786ccdd2f2a466d428e44fc3",
+        "published_sha256": "6f2b10eb54edc1fe516459c48074a865f553472e9472b060c496a0c8239e5f95",
+        "changed_top_level_functions": [],
+        "changes": "Template data path and CLI input/output defaults only; geometry, meshing, and Plaza refinement algorithms retained."
+      },
+      {
+        "file": "mesh_gen/case2_layered_sphere/refine_terrain_rx_earth_star_dolfin.py",
+        "source": "/mnt/d/CSU/mesh_scripts_sphere_mr3d_20261101/sphere/refine_terrain_rx_earth_star_dolfin.py",
+        "source_sha256": "a6bb3c717b722c8876f643ed3126e59517b7eb2604fcdf692ef1f1e4118046a1",
+        "published_sha256": "508502ec46ab2ea44b3d596899d809e73828c391050eb48bf898fe25395df427",
+        "changed_top_level_functions": [],
+        "changes": "Template data path and CLI input/output defaults only; geometry, meshing, and Plaza refinement algorithms retained."
+      }
+    ],
+    "copied_H5_and_parameters_byte_identity": true
+  },
+  "source_records": {
+    "original_mesh_audit": "MESH_AUDIT_20261101.json",
+    "block_port_report": {
+      "code_files": [
+        {
+          "path": "mesh_gen/case1_block/cross_validation/emg3d_worker.py",
+          "bytes": 12832,
+          "sha256": "7176e8b39a80a07b753b6c2a47f5e33b564f4edbfb20dbf403289bc3293deddb"
+        },
+        {
+          "path": "mesh_gen/case1_block/cross_validation/mesh_custem.py",
+          "bytes": 17440,
+          "sha256": "be76bd6c0df79b7496b578ea38ff375972a13266d9598d561b6482cda9b1547f"
+        },
+        {
+          "path": "mesh_gen/case1_block/cross_validation/refine_receiver_mesh.py",
+          "bytes": 8866,
+          "sha256": "c33f8a0d7265a48c46c20de6055887d43cb7381162c4f849e856c133ab82b022"
+        },
+        {
+          "path": "mesh_gen/case1_block/cross_validation/validation_common.py",
+          "bytes": 4969,
+          "sha256": "a3ee75d06a45fcd5124e3a28ef59bbb3a664a6b2e5c34144dafa48baa4ead9b7"
+        },
+        {
+          "path": "mesh_gen/case1_block/strategy/mesh_strategy.py",
+          "bytes": 16597,
+          "sha256": "1be4d4e2925cedb2dbe1de70b8cb8e7eeb06595c1ea4a3ad1fb2796ac8fb93fb"
+        },
+        {
+          "path": "mesh_gen/case1_block/strategy/strategy_contract.py",
+          "bytes": 3360,
+          "sha256": "1546189eeef5b0b4c885459879d8aa4265e7632ebec558a995c28e67fac1a52d"
+        }
+      ],
+      "data_copy": {
+        "files": [
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_cross_parent/meshes/custem_L2/_h5/custem_L2.h5",
+            "destination": "data/mesh_data/case1_block/cross_validation/custem/parent/meshes/custem_L2/_h5/custem_L2.h5",
+            "bytes": 327700192,
+            "sha256": "bf9d908903109568beaa0681f63a55dff2f9dbca79b8a38684b358c89c76c52e",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_cross_parent/meshes/custem_L2/para/custem_L2_parameters.json",
+            "destination": "data/mesh_data/case1_block/cross_validation/custem/parent/meshes/custem_L2/para/custem_L2_parameters.json",
+            "bytes": 90677,
+            "sha256": "6f0b7eec44d8356ecb47c627795ce7ad266b7f279aeb3a862dc5ff6d3f3fa9bf",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_cross_parent/meshes/custem_L2/mesh.json",
+            "destination": "data/mesh_data/case1_block/cross_validation/custem/parent/meshes/custem_L2/mesh.json",
+            "bytes": 12742,
+            "sha256": "550436c2ea3c72ac6482098c12cdde4e136448f57977276ec72e51ad6a52c615",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_cross_final/meshes/custem_L2/_h5/custem_L2.h5",
+            "destination": "data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2/_h5/custem_L2.h5",
+            "bytes": 504290216,
+            "sha256": "da4db495a2f4b50902316434ea35e9fc0f4dff76a5a4181c8d22d816dffefc46",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_cross_final/meshes/custem_L2/para/custem_L2_parameters.json",
+            "destination": "data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2/para/custem_L2_parameters.json",
+            "bytes": 90677,
+            "sha256": "6f0b7eec44d8356ecb47c627795ce7ad266b7f279aeb3a862dc5ff6d3f3fa9bf",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_cross_final/meshes/custem_L2/mesh.json",
+            "destination": "data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2/mesh.json",
+            "bytes": 13761,
+            "sha256": "846bb290a4220dba871e9cace09d7ce3be3f24825a5c76beaf2b51a8180fe200",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_strategy/mesh/meshes/_h5/csem_mor.h5",
+            "destination": "data/mesh_data/case1_block/strategy/mesh/meshes/_h5/csem_mor.h5",
+            "bytes": 29647096,
+            "sha256": "965592476299f4e41954c1c09b0288cb4d191c038800d6c9cdd0ef124e3ce966",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_strategy/mesh/meshes/para/csem_mor_parameters.json",
+            "destination": "data/mesh_data/case1_block/strategy/mesh/meshes/para/csem_mor_parameters.json",
+            "bytes": 207432,
+            "sha256": "1af98594b51e1c404acf54847ca79ce7dab3806d6660b651c1ed47b3e01ef7f3",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_strategy/mesh/mesh.json",
+            "destination": "data/mesh_data/case1_block/strategy/mesh/mesh.json",
+            "bytes": 176718,
+            "sha256": "ebee0e2bae6791d1748670043c64d770b0ce97b56c5fe24fb2a696a29d297f5e",
+            "metadata_modified": false
+          },
+          {
+            "source": "/tmp/supermor_mesh_regeneration_20261101_oko41es3/block_strategy/mesh_search.json",
+            "destination": "data/mesh_data/case1_block/strategy/mesh_search.json",
+            "bytes": 393,
+            "sha256": "dca54cf36bca0790b9185d7a3c048c0d3a05fdc0ceaa736eb14f2ef83e84e5ba",
+            "metadata_modified": false
+          },
+          {
+            "source": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/meshes/emg3d_fixed/axes_sigma.npz",
+            "destination": "data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/axes_sigma.npz",
+            "bytes": 19968,
+            "sha256": "4540f1ebd2dac815d5db64b9ab7d523d653e3bffc28b6ebd92c320cf62d1bfd7",
+            "metadata_modified": false
+          },
+          {
+            "source": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/meshes/emg3d_fixed/mesh.json",
+            "destination": "data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/mesh.json",
+            "bytes": 15574,
+            "sha256": "1d6e7d1268d01e3bdacf113592616d3e1808e692bbaf092ea95c5dc977773ef2",
+            "metadata_modified": false
+          },
+          {
+            "source": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/meshes/emg3d_fixed/receiver_support.npz",
+            "destination": "data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/receiver_support.npz",
+            "bytes": 222267,
+            "sha256": "7c1b5bdbfd7d5384ba461bed4aab4409a0a672719b34754bf77a8113276ef69d",
+            "metadata_modified": false
+          },
+          {
+            "source": "/mnt/d/CSU/custem_shifted_validation_20261030/collected/receiver_refinement_20466245/full_bundle/meshes/emg3d_fixed/receiver_support.json",
+            "destination": "data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed/receiver_support.json",
+            "bytes": 2691,
+            "sha256": "8a69e51311391e308c439d35b98483f714033aa2164dd52c9bc5169e554324ae",
+            "metadata_modified": false
+          }
+        ],
+        "all_frozen_bytes_preserved": true,
+        "metadata_policy": "Historical source/parent absolute paths remain provenance only; runtime entry defaults resolve new data directory. No metadata changed, no hashes regenerated."
+      },
+      "ast_comparison": [
+        {
+          "file": "cross_validation/validation_common.py",
+          "unchanged_functions": [
+            "_json_safe",
+            "identity",
+            "mesh_spec",
+            "object_hash",
+            "physical_config",
+            "receivers",
+            "sha256",
+            "write_json"
+          ],
+          "changed_functions": [],
+          "removed_functions": [
+            "_atomic_npz",
+            "_read_shard",
+            "_validate",
+            "line_indices",
+            "merge_responses",
+            "save_frequency"
+          ],
+          "added_functions": [
+            "nonnegative_level",
+            "source_directory"
+          ]
+        },
+        {
+          "file": "cross_validation/mesh_custem.py",
+          "unchanged_functions": [
+            "audit",
+            "checkpoint_action",
+            "expected_material_marker",
+            "mesh_plan",
+            "partition_rectangles",
+            "recovery_action",
+            "replace_shared_refinement_faces",
+            "run_conversion",
+            "smoke_mesh",
+            "split_facet_edges",
+            "validate_geometry"
+          ],
+          "changed_functions": [
+            "build",
+            "convert",
+            "main"
+          ],
+          "removed_functions": [],
+          "added_functions": []
+        },
+        {
+          "file": "cross_validation/refine_receiver_mesh.py",
+          "unchanged_functions": [
+            "inherit_materials",
+            "receiver_markers",
+            "refine",
+            "validate_parent",
+            "validate_paths"
+          ],
+          "changed_functions": [
+            "main"
+          ],
+          "removed_functions": [],
+          "added_functions": []
+        },
+        {
+          "file": "cross_validation/emg3d_worker.py",
+          "unchanged_functions": [
+            "_array_hash",
+            "_audit_mesh_arrays",
+            "_padding",
+            "atomic_npz",
+            "component_axes",
+            "fixed_mesh_arrays",
+            "linear_support",
+            "mesh_metadata",
+            "prepare_mesh",
+            "prepare_supports"
+          ],
+          "changed_functions": [
+            "main"
+          ],
+          "removed_functions": [
+            "_base_metadata",
+            "_curl_check",
+            "_curl_terms",
+            "_native_samples",
+            "_resources",
+            "_utc",
+            "accept_solution",
+            "apply_support",
+            "completed",
+            "contract_h",
+            "discrete_curl",
+            "execution_key",
+            "frequency_lock",
+            "load_native",
+            "make_model",
+            "make_source",
+            "native_smoke",
+            "normalization_policy",
+            "parse_indices",
+            "runtime_identity",
+            "sample_fields",
+            "single_cpu_environment",
+            "solve_frequency",
+            "solver_attempts"
+          ],
+          "added_functions": []
+        },
+        {
+          "file": "strategy/strategy_contract.py",
+          "unchanged_functions": [
+            "_json_value",
+            "physical_config",
+            "receivers",
+            "refinement_anchors",
+            "sha256",
+            "write_json"
+          ],
+          "changed_functions": [],
+          "removed_functions": [
+            "validate_response"
+          ],
+          "added_functions": [
+            "source_directory"
+          ]
+        },
+        {
+          "file": "strategy/mesh_strategy.py",
+          "unchanged_functions": [
+            "audit_parameters",
+            "build",
+            "candidate_metadata",
+            "convert_and_audit",
+            "dimension_metadata",
+            "expected_material_marker",
+            "generate_candidate",
+            "input_hashes",
+            "mesh_hash",
+            "mesh_plan",
+            "next_volume_scale",
+            "run_stage",
+            "validate_geometry",
+            "within_targets"
+          ],
+          "changed_functions": [
+            "main",
+            "source_identity",
+            "verify_frozen"
+          ],
+          "removed_functions": [],
+          "added_functions": []
+        }
+      ],
+      "numerical_changes": false,
+      "mesh_custem_build_convert_body_unchanged_after_helper_import_normalization": true,
+      "frozen_metadata_modified": false,
+      "tests": {
+        "all_files_ast_parse": true,
+        "all_cli_help": true,
+        "refiner_plan_default_paths": true,
+        "installed_source_auto_discovery_from_tmp": true,
+        "existing_cross_parent_resume": true,
+        "existing_strategy_resume_and_plan_check": true,
+        "existing_emg_mesh_support_identity": true,
+        "fresh_emg_grid_and_support_generation": true,
+        "all_fresh_emg_arrays_exactly_equal_frozen": true
+      },
+      "runtime_paths": {
+        "cross_parent_root": "data/mesh_data/case1_block/cross_validation/custem/parent",
+        "cross_parent_mesh": "data/mesh_data/case1_block/cross_validation/custem/parent/meshes/custem_L2",
+        "cross_final_root": "data/mesh_data/case1_block/cross_validation/custem/final",
+        "cross_final_mesh": "data/mesh_data/case1_block/cross_validation/custem/final/meshes/custem_L2",
+        "emg_root": "data/mesh_data/case1_block/cross_validation/emg3d",
+        "emg_mesh": "data/mesh_data/case1_block/cross_validation/emg3d/meshes/emg3d_fixed",
+        "strategy_root": "data/mesh_data/case1_block/strategy",
+        "strategy_mesh": "data/mesh_data/case1_block/strategy/mesh/meshes",
+        "strategy_metadata": "data/mesh_data/case1_block/strategy/mesh/mesh.json"
+      },
+      "notes": [
+        "No forward solver worker copied; two required helper functions extracted to validation_common.",
+        "emg3d_worker.py is NumPy-only mesh generation; does not import native emg3d.",
+        "Current source auto-discovery uses importlib.util.find_spec(custEM), optional CUSTEM_SOURCE override.",
+        "Historical absolute paths inside frozen metadata are provenance only; frozen data files remain byte-identical.",
+        "Strategy fingerprints actual generator/contract and installed meshgen files instead of unused original example. Legacy frozen artifacts compare actual library hashes, complete current mesh_plan, physics/frequencies, H5/parameter hashes; new checkpoints also enforce generator hashes.",
+        "Refiner preserves original nonempty-output refusal; do not blindly rerun against bundled final directory.",
+        "No large tetrahedral remeshing performed for this port.",
+        "No packages installed and no cache/binary/data files placed under mesh_gen."
+      ]
+    },
+    "sphere_migration_record": "data/mesh_data/case2_layered_sphere/migration_manifest.json",
+    "MR3D_port_report": {
+      "code": [
+        {
+          "source": "/mnt/d/CSU/mesh_scripts_sphere_mr3d_20261101/mr3d/experiments/mr3d_custem/mr3d.py",
+          "destination": "/home/taqikema/projects/supermor/mesh_gen/case3_mr3d/experiments/mr3d_custem/mr3d.py",
+          "bytes": 5817,
+          "source_sha256": "ceb2241bf83c0791131062951a3afef07d509ab910e33bc81120c682c2ae6a73",
+          "destination_sha256": "ceb2241bf83c0791131062951a3afef07d509ab910e33bc81120c682c2ae6a73",
+          "destination_sha256_after_path_adaptation": "9d21069dc3c9d995b3e959be3b96d429016b0192c77a6ef780dd309117c2fd29"
+        },
+        {
+          "source": "/mnt/d/CSU/mesh_scripts_sphere_mr3d_20261101/mr3d/experiments/mr3d_custem/mesh.py",
+          "destination": "/home/taqikema/projects/supermor/mesh_gen/case3_mr3d/experiments/mr3d_custem/mesh.py",
+          "bytes": 12788,
+          "source_sha256": "70239470c82eca9cc4f71cabdb882b7faeb141cf8d05bca9ed53a5c4bdb01735",
+          "destination_sha256": "70239470c82eca9cc4f71cabdb882b7faeb141cf8d05bca9ed53a5c4bdb01735",
+          "destination_sha256_after_path_adaptation": "ec94fcdc0e073b8fe67ac96b57859c7d3bbec98ed94a71697cd403f2893b979b"
+        },
+        {
+          "source": "/mnt/d/CSU/mesh_scripts_sphere_mr3d_20261101/mr3d/experiments/mr3d_custem/prepare.py",
+          "destination": "/home/taqikema/projects/supermor/mesh_gen/case3_mr3d/experiments/mr3d_custem/prepare.py",
+          "bytes": 18225,
+          "source_sha256": "cff601dfd2803bac7089314365e41f3038168d31cc1354630565e3b1a4fe75d6",
+          "destination_sha256": "cff601dfd2803bac7089314365e41f3038168d31cc1354630565e3b1a4fe75d6",
+          "destination_sha256_after_path_adaptation": "cff601dfd2803bac7089314365e41f3038168d31cc1354630565e3b1a4fe75d6"
+        }
+      ],
+      "inputs": [
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/interfaces/Base_of_salt-mr3d_reverted.xyz",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/interfaces/Base_of_salt-mr3d_reverted.xyz",
+          "bytes": 12422040,
+          "source_sha256": "c77d5ba67e3fffa9075d46f17d3097864cceab6f4c394432c1f5a2533a85f57d",
+          "destination_sha256": "c77d5ba67e3fffa9075d46f17d3097864cceab6f4c394432c1f5a2533a85f57d"
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/interfaces/Blue_mark-mr3d_reverted.xyz",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/interfaces/Blue_mark-mr3d_reverted.xyz",
+          "bytes": 12423585,
+          "source_sha256": "a38048e33ed982134b6d32c0bde4c68e55cfbee5be1be402acc922bd47e063f2",
+          "destination_sha256": "a38048e33ed982134b6d32c0bde4c68e55cfbee5be1be402acc922bd47e063f2"
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/interfaces/Miocene-mr3d_reverted.xyz",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/interfaces/Miocene-mr3d_reverted.xyz",
+          "bytes": 12426624,
+          "source_sha256": "df87fc334815491d0f9a2e155c9f4054d961c83f536ae5b56fb1aae3ce1a7947",
+          "destination_sha256": "df87fc334815491d0f9a2e155c9f4054d961c83f536ae5b56fb1aae3ce1a7947"
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/interfaces/Oligocene-mr3d_reverted.xyz",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/interfaces/Oligocene-mr3d_reverted.xyz",
+          "bytes": 12424118,
+          "source_sha256": "b210e5a51e12984e553116d5609d93e845bc578bf5e64ad44df9fb271a31e168",
+          "destination_sha256": "b210e5a51e12984e553116d5609d93e845bc578bf5e64ad44df9fb271a31e168"
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/interfaces/Sea_Bottom-mr3d_reverted.xyz",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/interfaces/Sea_Bottom-mr3d_reverted.xyz",
+          "bytes": 12424530,
+          "source_sha256": "ebd49c1e122a24625f2a2bf4ae5002abb9203e770b309dc4981ea27dad34e18c",
+          "destination_sha256": "ebd49c1e122a24625f2a2bf4ae5002abb9203e770b309dc4981ea27dad34e18c"
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/interfaces/Top_of_Salt-mr3d_reverted.xyz",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/interfaces/Top_of_Salt-mr3d_reverted.xyz",
+          "bytes": 12423482,
+          "source_sha256": "c924cd4cb96238d096e356b48a3ea733f9441ca84357d0ade54c1c403cf1b8a0",
+          "destination_sha256": "c924cd4cb96238d096e356b48a3ea733f9441ca84357d0ade54c1c403cf1b8a0"
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/manifest.json",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/manifest.json",
+          "bytes": 1752,
+          "source_sha256": "eb38544d00f33e5ecc268a2e9c8b658cde30402e09b49732f6f63f8fac7b4fdd",
+          "destination_sha256": "eb38544d00f33e5ecc268a2e9c8b658cde30402e09b49732f6f63f8fac7b4fdd"
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/prepared/survey.npz",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/prepared/survey.npz",
+          "bytes": 11294,
+          "source_sha256": "0b22f4051cded9a139875e62a58c1b6c7b0401ee2ee6c2da5bab49793755f14c",
+          "destination_sha256": "0b22f4051cded9a139875e62a58c1b6c7b0401ee2ee6c2da5bab49793755f14c"
+        }
+      ],
+      "meshes": [
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/manifest.json",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/manifest.json",
+          "bytes": 1978,
+          "source_sha256": "b2bb298892a24397b7e29c237d78cf84a27e79d88112e4d50f87b7ce7b920e57",
+          "destination_sha256": "b2bb298892a24397b7e29c237d78cf84a27e79d88112e4d50f87b7ce7b920e57",
+          "artifacts": [
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/_h5/mr3d_m1_a01.h5",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/_h5/mr3d_m1_a01.h5",
+              "bytes": 36958008,
+              "source_sha256": "ee8a13654dfa45adfb3221b51c08772cd03213ecd085bc7fbff16abe9e61924a",
+              "destination_sha256": "ee8a13654dfa45adfb3221b51c08772cd03213ecd085bc7fbff16abe9e61924a"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 22788,
+              "source_sha256": "b721d60195e189d95e0e58aa5af6474fd71f31c95f7d8cbd6d6a79fb616a2bdc",
+              "destination_sha256": "b721d60195e189d95e0e58aa5af6474fd71f31c95f7d8cbd6d6a79fb616a2bdc"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "bytes": 208670,
+              "source_sha256": "4e9f679aed9d91fe0aaff2ec039a8d169b873f01e995a52c999382349758c5ec",
+              "destination_sha256": "4e9f679aed9d91fe0aaff2ec039a8d169b873f01e995a52c999382349758c5ec"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 22788,
+              "source_sha256": "46e9982b56a590bcac240b3fe360c486fbd1d1a66e0901e952b19b003dd83505",
+              "destination_sha256": "46e9982b56a590bcac240b3fe360c486fbd1d1a66e0901e952b19b003dd83505"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 208670,
+              "source_sha256": "6c292c446a555155c62b10b4360bec9f73a152af4d282e703a3ebc1844b64982",
+              "destination_sha256": "6c292c446a555155c62b10b4360bec9f73a152af4d282e703a3ebc1844b64982"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "bytes": 30362,
+              "source_sha256": "fdb148b098a7795037c3eda2cba1c2ff9356973a61bbc4a12626e31e620397cc",
+              "destination_sha256": "fdb148b098a7795037c3eda2cba1c2ff9356973a61bbc4a12626e31e620397cc"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 22788,
+              "source_sha256": "d92d72308a6218f36df29d9a280e16877394602869a91e257aa01083cdc8e170",
+              "destination_sha256": "d92d72308a6218f36df29d9a280e16877394602869a91e257aa01083cdc8e170"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_parameters.json",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_parameters.json",
+              "bytes": 16926,
+              "source_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+              "destination_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M1/attempt_01/para/mr3d_m1_a01_surf.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M1/attempt_01/para/mr3d_m1_a01_surf.xyz",
+              "bytes": 22492,
+              "source_sha256": "d5bd27f709469f1e67ab35ebb27b4119d51d51540c8a8d82d2a07cb9351006a1",
+              "destination_sha256": "d5bd27f709469f1e67ab35ebb27b4119d51d51540c8a8d82d2a07cb9351006a1"
+            }
+          ],
+          "destination_sha256_after_path_adaptation": "ee0390678feb56212651561442d13e457967cf39a2e716a2f82629ae19ee7711",
+          "path_changes": [
+            "m_dir and attempts[].m_dir are relative to the MR3D data workdir.",
+            "attempts[].log is null because generation logs are retained in verification evidence, not copied into runtime mesh data."
+          ]
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/manifest.json",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/manifest.json",
+          "bytes": 2041,
+          "source_sha256": "38eb411956735fb7490ddb99cf165f152786d52be8245e22650d58946b083126",
+          "destination_sha256": "38eb411956735fb7490ddb99cf165f152786d52be8245e22650d58946b083126",
+          "artifacts": [
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/_h5/mr3d_m2_a01.h5",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/_h5/mr3d_m2_a01.h5",
+              "bytes": 207759488,
+              "source_sha256": "ea50ba465c07519fd00fd44778ca8b86dfc7ed3dfe811c2b4fc59352fc285eaa",
+              "destination_sha256": "ea50ba465c07519fd00fd44778ca8b86dfc7ed3dfe811c2b4fc59352fc285eaa"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 95254,
+              "source_sha256": "f8dd1cb795f111bdc80253401d103b2259582d2166e8c57138a7f7e49aac84c9",
+              "destination_sha256": "f8dd1cb795f111bdc80253401d103b2259582d2166e8c57138a7f7e49aac84c9"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "bytes": 912318,
+              "source_sha256": "95e838b079305e66987bd318d913cb44fcc3b088f90696d401974a35214571bd",
+              "destination_sha256": "95e838b079305e66987bd318d913cb44fcc3b088f90696d401974a35214571bd"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 95254,
+              "source_sha256": "a2ce01b06e9457c3b332dea710aaf8ca85057bf6f60b897bd0f51e13506a963b",
+              "destination_sha256": "a2ce01b06e9457c3b332dea710aaf8ca85057bf6f60b897bd0f51e13506a963b"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 912318,
+              "source_sha256": "e6bab765f5c2c673c8d4d2cdfa6446157f053df37baac3e69c4bfdd38af3af92",
+              "destination_sha256": "e6bab765f5c2c673c8d4d2cdfa6446157f053df37baac3e69c4bfdd38af3af92"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "bytes": 99498,
+              "source_sha256": "d7a86b7698b48e893237ac2d0365ada06bd46aa69e0ebfa79b5f69365fb60e26",
+              "destination_sha256": "d7a86b7698b48e893237ac2d0365ada06bd46aa69e0ebfa79b5f69365fb60e26"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 95254,
+              "source_sha256": "2ba83931bdc5fd4ec3126c2a056415ddcbfbf301757b4f24b2364c82e42de6d7",
+              "destination_sha256": "2ba83931bdc5fd4ec3126c2a056415ddcbfbf301757b4f24b2364c82e42de6d7"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_parameters.json",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_parameters.json",
+              "bytes": 16926,
+              "source_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+              "destination_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M2/attempt_01/para/mr3d_m2_a01_surf.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M2/attempt_01/para/mr3d_m2_a01_surf.xyz",
+              "bytes": 94017,
+              "source_sha256": "1357515e295c9bcd7e20e63580e5a3fb37937e296883303714a1341b359da124",
+              "destination_sha256": "1357515e295c9bcd7e20e63580e5a3fb37937e296883303714a1341b359da124"
+            }
+          ],
+          "destination_sha256_after_path_adaptation": "df6ec55f060d8efebb02e571416966e9985c79d977c90cb028a3ac1add6c6022",
+          "path_changes": [
+            "m_dir and attempts[].m_dir are relative to the MR3D data workdir.",
+            "attempts[].log is null because generation logs are retained in verification evidence, not copied into runtime mesh data."
+          ]
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/manifest.json",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/manifest.json",
+          "bytes": 2046,
+          "source_sha256": "86c4b1a815fc8c4552189c526b9732e4a8453f68a6e81ab894a433a8fc1147ec",
+          "destination_sha256": "86c4b1a815fc8c4552189c526b9732e4a8453f68a6e81ab894a433a8fc1147ec",
+          "artifacts": [
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/_h5/mr3d_m3_a01.h5",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/_h5/mr3d_m3_a01.h5",
+              "bytes": 457858344,
+              "source_sha256": "6c784094466ad3fa4a587aeacca52d6c61f96d2125aef90ab00bd3d16e824a31",
+              "destination_sha256": "6c784094466ad3fa4a587aeacca52d6c61f96d2125aef90ab00bd3d16e824a31"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 169307,
+              "source_sha256": "1d50aca6d13528205c3d6111e02960f75b6510354834da9154e0590677df7726",
+              "destination_sha256": "1d50aca6d13528205c3d6111e02960f75b6510354834da9154e0590677df7726"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "bytes": 1639833,
+              "source_sha256": "eee6f08ecae780510f580d926701970116fdacec030c0dcd2b0360dd0321030e",
+              "destination_sha256": "eee6f08ecae780510f580d926701970116fdacec030c0dcd2b0360dd0321030e"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 169307,
+              "source_sha256": "1f7ed62963a379bdd61624af03e044da1c302b3e8c724afd40245d99f2a55781",
+              "destination_sha256": "1f7ed62963a379bdd61624af03e044da1c302b3e8c724afd40245d99f2a55781"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 1639833,
+              "source_sha256": "9b4e972879d230b2c7bafb29d24e224311baf908722bcaa594c6eb5c4ec312ab",
+              "destination_sha256": "9b4e972879d230b2c7bafb29d24e224311baf908722bcaa594c6eb5c4ec312ab"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "bytes": 173041,
+              "source_sha256": "594767cf92aa1d42f7c88132595b8edd41765af176b63ca809146bb31ed36ecb",
+              "destination_sha256": "594767cf92aa1d42f7c88132595b8edd41765af176b63ca809146bb31ed36ecb"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 169307,
+              "source_sha256": "2f48277d2395add016f8a0f7a5871524ad34a6cd79cc5698d8e3e5000fda7394",
+              "destination_sha256": "2f48277d2395add016f8a0f7a5871524ad34a6cd79cc5698d8e3e5000fda7394"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_parameters.json",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_parameters.json",
+              "bytes": 16926,
+              "source_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+              "destination_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M3/attempt_01/para/mr3d_m3_a01_surf.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M3/attempt_01/para/mr3d_m3_a01_surf.xyz",
+              "bytes": 167108,
+              "source_sha256": "20009260afcf2efe95a454d6d759adc5ccf7fbcff69dd19efc5337017516903f",
+              "destination_sha256": "20009260afcf2efe95a454d6d759adc5ccf7fbcff69dd19efc5337017516903f"
+            }
+          ],
+          "destination_sha256_after_path_adaptation": "63307ecf240e3356af061bc0f23751247833ba4db0a4b78c940baf8561499636",
+          "path_changes": [
+            "m_dir and attempts[].m_dir are relative to the MR3D data workdir.",
+            "attempts[].log is null because generation logs are retained in verification evidence, not copied into runtime mesh data."
+          ]
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/manifest.json",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/manifest.json",
+          "bytes": 2059,
+          "source_sha256": "82f3e97f58f6b8548bbb448e7648b6fceff1258a587f1a8c52a83803acf64267",
+          "destination_sha256": "82f3e97f58f6b8548bbb448e7648b6fceff1258a587f1a8c52a83803acf64267",
+          "artifacts": [
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/_h5/mr3d_m4_a01.h5",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/_h5/mr3d_m4_a01.h5",
+              "bytes": 613849664,
+              "source_sha256": "9e8e151ea47a49ab1aca809cb8891f289847f0dbed6a3c31fd5918c6fdc87a7c",
+              "destination_sha256": "9e8e151ea47a49ab1aca809cb8891f289847f0dbed6a3c31fd5918c6fdc87a7c"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 206358,
+              "source_sha256": "f295ab5c4587ab5ff5ca77d495c9aac00b6901adfacd2cef57b58dec5b002742",
+              "destination_sha256": "f295ab5c4587ab5ff5ca77d495c9aac00b6901adfacd2cef57b58dec5b002742"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "bytes": 2027573,
+              "source_sha256": "9e350f1c1a4262f34562acad07df430f30398f0e665ac348309b9fda50721f0e",
+              "destination_sha256": "9e350f1c1a4262f34562acad07df430f30398f0e665ac348309b9fda50721f0e"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 206358,
+              "source_sha256": "cadecc430630f19e037d8816861ec477c1dbb528cd22c663925680b206adabaa",
+              "destination_sha256": "cadecc430630f19e037d8816861ec477c1dbb528cd22c663925680b206adabaa"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 2027573,
+              "source_sha256": "53b3245f4b53acdf9ac2fc5cf57c8bb4ed499223d2459962457b4646d330f921",
+              "destination_sha256": "53b3245f4b53acdf9ac2fc5cf57c8bb4ed499223d2459962457b4646d330f921"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "bytes": 211840,
+              "source_sha256": "5c5d1f4cd850a85acdc78bf7fc0510be3d646e0e23f6e4b4d78af4316be68bde",
+              "destination_sha256": "5c5d1f4cd850a85acdc78bf7fc0510be3d646e0e23f6e4b4d78af4316be68bde"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 206358,
+              "source_sha256": "6620e913d27ca89ed4c1f082d55501bb0c452c5f8a889b49dcbbe30026f4e276",
+              "destination_sha256": "6620e913d27ca89ed4c1f082d55501bb0c452c5f8a889b49dcbbe30026f4e276"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_parameters.json",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_parameters.json",
+              "bytes": 16926,
+              "source_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+              "destination_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M4/attempt_01/para/mr3d_m4_a01_surf.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M4/attempt_01/para/mr3d_m4_a01_surf.xyz",
+              "bytes": 203678,
+              "source_sha256": "5d0d8bcae6cc73dfe7c58e0efab9a2f13dd46e7dd4b5c94454b59cf1fadb951c",
+              "destination_sha256": "5d0d8bcae6cc73dfe7c58e0efab9a2f13dd46e7dd4b5c94454b59cf1fadb951c"
+            }
+          ],
+          "destination_sha256_after_path_adaptation": "3dbd14f29c75b19b46da5ba22e5b3f6459cf2b4e29c1a3d9d7047554e3f49f86",
+          "path_changes": [
+            "m_dir and attempts[].m_dir are relative to the MR3D data workdir.",
+            "attempts[].log is null because generation logs are retained in verification evidence, not copied into runtime mesh data."
+          ]
+        },
+        {
+          "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/manifest.json",
+          "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/manifest.json",
+          "bytes": 5115,
+          "source_sha256": "64ea91962e4936cbeac9c9348e3b03b2507c7f7698926bd42bd8ca773f835553",
+          "destination_sha256": "64ea91962e4936cbeac9c9348e3b03b2507c7f7698926bd42bd8ca773f835553",
+          "artifacts": [
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/_h5/mr3d_m5_a01.h5",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/_h5/mr3d_m5_a01.h5",
+              "bytes": 754340488,
+              "source_sha256": "786781a8a3589e036141d842026cd238e274a8f16e9279de6fd88b68323f5acb",
+              "destination_sha256": "786781a8a3589e036141d842026cd238e274a8f16e9279de6fd88b68323f5acb"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_Base_of_salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 240712,
+              "source_sha256": "bd9350acfd991e1565d56381265218cfa40bb5cfcd904e263f6b5481207bb5a9",
+              "destination_sha256": "bd9350acfd991e1565d56381265218cfa40bb5cfcd904e263f6b5481207bb5a9"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_Blue_mark-mr3d_reverted_triangulated.xyz",
+              "bytes": 2344755,
+              "source_sha256": "ad033f6abed48e60ed424024d2a3b9b9e4983afdd1806110c3a916291e3d7e4b",
+              "destination_sha256": "ad033f6abed48e60ed424024d2a3b9b9e4983afdd1806110c3a916291e3d7e4b"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_Miocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 240712,
+              "source_sha256": "8ce0c770842de483dcd11bc66e6c906fefc3cb5adb99ccca5169b8e849aba421",
+              "destination_sha256": "8ce0c770842de483dcd11bc66e6c906fefc3cb5adb99ccca5169b8e849aba421"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_Oligocene-mr3d_reverted_triangulated.xyz",
+              "bytes": 2344755,
+              "source_sha256": "bdf9a2a5a7ab380fba3dbd6a92d698766004f8ea673b5593e1091bfc6c50300d",
+              "destination_sha256": "bdf9a2a5a7ab380fba3dbd6a92d698766004f8ea673b5593e1091bfc6c50300d"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_Sea_Bottom-mr3d_reverted_triangulated.xyz",
+              "bytes": 248790,
+              "source_sha256": "357f505622625cf467ff5989915bac6dfa4da9e11031ad7b76cd87e15fa70471",
+              "destination_sha256": "357f505622625cf467ff5989915bac6dfa4da9e11031ad7b76cd87e15fa70471"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_Top_of_Salt-mr3d_reverted_triangulated.xyz",
+              "bytes": 240712,
+              "source_sha256": "b4b0c8d165a2af5ae324c8cf32243089263fe69f920d11e90db774f47664d1df",
+              "destination_sha256": "b4b0c8d165a2af5ae324c8cf32243089263fe69f920d11e90db774f47664d1df"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_parameters.json",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_parameters.json",
+              "bytes": 16926,
+              "source_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77",
+              "destination_sha256": "e77d42f0ff08b758188b1a37479e3fe3b47619f078faa4ea1e0fa3943ef5cc77"
+            },
+            {
+              "source": "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/work/meshes/M5/attempt_01/para/mr3d_m5_a01_surf.xyz",
+              "destination": "/home/taqikema/projects/supermor/data/mesh_data/case3_mr3d/meshes/M5/attempt_01/para/mr3d_m5_a01_surf.xyz",
+              "bytes": 237586,
+              "source_sha256": "ac64cee4186ebf259c40f590662e50bfda1944fd773c170f7a6c2533af68ff42",
+              "destination_sha256": "ac64cee4186ebf259c40f590662e50bfda1944fd773c170f7a6c2533af68ff42"
+            }
+          ],
+          "destination_sha256_after_path_adaptation": "a9fd8efd6d8877b432367b1180966009a360023609bf50b0bb86da3d03b6aca0",
+          "path_changes": [
+            "m_dir and attempts[].m_dir are relative to the MR3D data workdir.",
+            "attempts[].log is null because generation logs are retained in verification evidence, not copied into runtime mesh data."
+          ]
+        }
+      ],
+      "notes": [
+        "Initial copies are byte-identical. Only copied code/manifest path adaptation follows; all H5 and parameter inputs remain unchanged."
+      ],
+      "original_function_ast_checks": [
+        {
+          "file": "mesh.py",
+          "definition": "_next_scale",
+          "original_AST_equal": true
+        },
+        {
+          "file": "mesh.py",
+          "definition": "_initial_scale",
+          "original_AST_equal": true
+        },
+        {
+          "file": "mesh.py",
+          "definition": "read_tetgen_counts",
+          "original_AST_equal": true
+        },
+        {
+          "file": "mesh.py",
+          "definition": "_stage_log",
+          "original_AST_equal": true
+        },
+        {
+          "file": "mesh.py",
+          "definition": "_generate",
+          "original_AST_equal": true
+        },
+        {
+          "file": "mesh.py",
+          "definition": "build_mesh",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_model_config",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_report_progress",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_powershell_download",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_download",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_extract_models",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "fetch_data",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "scale_segy_coordinates",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_trace_layout",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_survey_arrays",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "_write_log_model",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "require_prepared",
+          "original_AST_equal": true
+        },
+        {
+          "file": "prepare.py",
+          "definition": "prepare_data",
+          "original_AST_equal": true
+        }
+      ],
+      "all_original_mesh_and_preparation_definitions_unchanged": true,
+      "code_changes": {
+        "mr3d.py": [
+          "Default workdir resolves to supermor/data/mesh_data/case3_mr3d.",
+          "Removed unavailable solve and plot commands from the mesh-only entry point.",
+          "check validates only the meshing environment and eight geometry inputs, without requiring forward material arrays."
+        ],
+        "mesh.py": [
+          "Added load_mesh_manifest(workdir, level), resolving relative runtime m_dir paths; all original function ASTs are unchanged."
+        ],
+        "prepare.py": [
+          "Byte-identical to the verified original; fetch/prepare receive the chosen data workdir."
+        ]
+      },
+      "light_verification": {
+        "cli_help_passed": true,
+        "mesh_help_passed": true,
+        "mesh_input_and_environment_check_passed": true,
+        "runtime_path_h5_shape_check_passed": true,
+        "verification_reports": [
+          "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/reports/MR3D_migration_cli_check.json",
+          "/tmp/supermor_mr3d_mesh_regeneration_20261101_0z8i2l_m/reports/MR3D_migration_runtime_check.json"
+        ],
+        "no_generated_artifacts_in_code": true,
+        "no_bytecode_caches_in_code": true,
+        "heavy_regeneration_executed_during_migration": false,
+        "packages_installed": false
+      }
+    }
+  },
+  "cleanup": [
+    "Removed empty per-level/material placeholders from mesh_gen; code no longer mirrors data directories.",
+    "Removed unused forward custem_worker after extracting its two mesh helpers.",
+    "Removed the strategy provenance-only dependency on an old external example.",
+    "Original source directories remain intact; old top-level mesh_data scaffold is no longer present."
+  ],
+  "limits": [
+    "Sphere/MR3D reproduction counts were checked previously; direct array identity against original formal global H5 remains unproven for those cases.",
+    "Migration preserves existing verified generated meshes; full new sphere/MR3D generation was not repeated after path-only adaptation.",
+    "MR3D M5 conversion interruption/recovery metadata is retained.",
+    "Only mesh-related content is populated. Full numerical runs, figures and MR3D resistivity material arrays remain separate packaging work."
+  ],
+  "notes": [
+    "The only README is the root README.txt.",
+    "No environment or package installer was added inside the project.",
+    "The six MR3D XYZ inputs exist locally but remain outside Git; the publication archive address is not yet assigned."
+  ],
+  "validation_support_files": {
+    "tests/test_mesh_generation.py": "63f6a680004b56b423c06af009a41a40bd11aac9c6d97ab18ac8bcab955d4a91",
+    "runs/common/mesh_inputs.py": "9cf8118e0bc9fce6b2c4c6a35e45d1c9991037d84d41e13b09ce4376e99ee1a5"
+  },
+  "input_generation_audit_20261102": {
+    "method": "Read-only producer/consumer source audit; actual sphere formal input_metadata read against the migrated final data; targeted emg3d repair regression tests.",
+    "three_small_inputs_git_status": "Untracked (??), not ignored; not staged or committed.",
+    "external_independent_inputs": [
+      "Sphere surface template",
+      "MR3D prepared manifest and survey",
+      "Six processed MR3D interface XYZ files"
+    ],
+    "block_required_generated_outputs": [
+      "parent/final H5, parameter JSON and mesh.json",
+      "emg3d axes_sigma.npz, mesh.json, receiver_support.npz, receiver_support.json",
+      "strategy H5, parameters, mesh.json and search record"
+    ],
+    "sphere_required_generated_outputs": [
+      "terrain_sphere.h5",
+      "terrain_sphere_parameters.json",
+      "mesh.json",
+      "receivers.csv",
+      "source.csv",
+      "source_edge_audit.json",
+      "receiver_audit.json",
+      "geometry_audit.json"
+    ],
+    "sphere_formal_metadata_read": "Passed against current final stage, 200 receivers, 21 source vertices, regions 0..4; no solve.",
+    "MR3D_required_generated_mesh_outputs": [
+      "H5",
+      "companion parameter JSON",
+      "triangulated surface sidecars",
+      "per-level standard manifest"
+    ],
+    "nonruntime_records": [
+      "migration_manifest.json",
+      "original regeneration/migration validation evidence",
+      "M5 historical conversion-recovery provenance"
+    ],
+    "mesh_output_manual_dependency_found": false,
+    "emg3d_check_gap_fixed": "Both receiver-support sidecars are now required and fully checked. The generator restores either/both missing sidecars from the fixed mesh and receiver definitions; incompatible retained data are rejected.",
+    "MR3D_material_inputs_not_present": [
+      "case3_mr3d/prepared/axes.npz",
+      "case3_mr3d/prepared/log_rho_h.npy",
+      "case3_mr3d/prepared/log_rho_v.npy"
+    ],
+    "MR3D_material_generation": "Available fetch/prepare CLI with --model original; requires original raw model, survey and interfaces. Unified generate.py all is mesh-only and does not execute this preparation.",
+    "future_numerical_runs_implemented": false,
+    "full_runs_end_to_end_validated": false,
+    "new_tests": "15 passed, including both missing sidecars, either missing sidecar, and changed sampling weights."
+  }
+}

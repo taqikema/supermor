@@ -27,6 +27,22 @@ its license as CC BY 4.0. Preserve the source record, exact downloaded file
 names, selected version, attribution and preprocessing description for any
 material inputs or derived section data actually distributed.
 
+The mesh-generation inputs now include the prepared original-model metadata,
+the reciprocal survey and six processed interface XYZ files. The interface
+coordinates follow the verified preparation script (original UTM x/y, third
+column negated); the mesher applies the documented horizontal translation.
+Only manifest.json and survey.npz are Git release inputs. The six interface
+files are local/Zenodo data excluded from Git. They are geometric inputs,
+not the full horizontal/vertical resistivity volumes needed for forward runs.
+
+Paper mesh generation
+---------------------
+mesh_gen/ contains the authors' paper-specific block, sphere and MR3D scripts,
+adapted from their verified experiment sources. The sphere surface template
+is a small required geometric input in data/mesh_data/. The custEM framework
+mesh-generation library remains an external dependency. MESH_VALIDATION.json
+records the source adaptations, hashes and available verification evidence.
+
 Dependencies and fonts
 ----------------------
 Third-party software dependencies keep their own licenses. Refer to the

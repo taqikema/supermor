@@ -78,6 +78,16 @@ P2 IFOM and P2 chain/correction are explicitly unsupported. VTI assignment
 must follow upstream build_var_form, never precede a subsequent rebuild.
 Core validation does not certify the large paper cases or timing/memory.
 
+Mesh generation
+---------------
+Use mesh_gen/generate.py with the activated numerical environment. The
+existing WSL cust_env can run mesh generation without installing a package
+inside this repository. TetGen 1.6.0 and pyGIMLi 1.5.0 are the recorded mesh
+tools. The block emg3d mesh-only entry uses NumPy and does not import the
+emg3d forward solver. The current migration checks and their environment
+scope are recorded in MESH_VALIDATION.json; they are separate from the core
+solver reconstruction in CORE_VALIDATION.json.
+
 Drawing environment
 -------------------
 Figures using sumor_paper_figure_style.py require Times New Roman. Set

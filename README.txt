@@ -8,8 +8,11 @@ in tests/. It extends a separately installed, unmodified official custEM.
 The numerical environment and pinned upstream sources are recorded in
 root environment.yml; installation commands are provided below.
 CORE_VALIDATION.json records the completed migration checks and their limits.
-mesh_data/, runs/ and figs/ remain release destinations to populate; their
-script/data names below are planned locations, not implemented case entries.
+Mesh generators are implemented in mesh_gen/. Their necessary inputs and
+previously validated local outputs are organized under data/mesh_data/.
+MESH_VALIDATION.json records the mesh migration checks and verification limits.
+The numerical run entries and figure scripts/data remain planned; runs/common/
+currently provides the shared mesh-path helper only.
 The complete paper release is not yet assembled. Source-to-paper mapping,
 mesh provenance, dependency notes and the original license are provided.
 This root README is the single usage guide for all directories below.
@@ -32,8 +35,8 @@ Both alternatives are not required. If a runtime still imports validation
 helpers from a mesh generator, retain or extract those helpers before
 omitting the generator itself.
 
-RELEASE TREE (CORE POPULATED; CASE AND FIGURE ENTRIES PLANNED)
-------------------------------------------------------------
+RELEASE TREE (CORE AND MESH CONTENTS POPULATED; RUNS/FIGURES PLANNED)
+------------------------------------------------------------------
 supermor/
 |-- README.txt
 |-- pyproject.toml                   SUPERMOR package/version and upstream pin
@@ -45,7 +48,8 @@ supermor/
 |-- THIRD_PARTY.txt                  Input sources and existing attribution
 |-- VERSION.txt                      Source commit; add final release tag/DOI
 |-- FILE_FIGURE_MAP.csv               Paper item -> source -> proposed release path
-|-- MESH_AUDIT_20261101.json          Local source/artifact/parameter audit evidence
+|-- MESH_AUDIT_20261101.json          Immutable earlier provenance audit snapshot
+|-- MESH_VALIDATION.json             Current mesh migration/results and limits
 |-- core/
 |   `-- supermor/
 |       |-- __init__.py              Independent public API
@@ -56,22 +60,37 @@ supermor/
 |       |-- materials.py             Native distributed DG0 VTI assignment
 |       `-- mor_high_order.py        P2 exact-sequence/AMS transfers
 |-- tests/                           Algebra, P1/P2, official H5 and A/B checks
-|-- mesh_data/
+|-- mesh_gen/
+|   |-- generate.py                  Unified mesh generation/check entry
+|   |-- paths.py                     Shared case -> runtime input paths
+|   |-- verify.py                    Independent topology/edge checks
 |   |-- case1_block/
-|   |   |-- cross_validation/
-|   |   |   |-- custem/              Final fine H5, domain markers, companion inputs
-|   |   |   `-- emg3d/               Frozen axes/material grid and required metadata
-|   |   `-- strategy/                Separate mesh for gradient/pole comparisons
-|   |-- case2_layered_sphere/        Formal H5, parameters and receivers.csv
+|   |   |-- cross_validation/        mesh_custem.py, refine_receiver_mesh.py,
+|   |   |                           validation_common.py, emg3d_worker.py
+|   |   `-- strategy/                mesh_strategy.py, strategy_contract.py
+|   |-- case2_layered_sphere/        Initial generator, two Plaza entries,
+|   |                               and refine_terrain_rx_star.py helper
 |   `-- case3_mr3d/
-|       |-- material/                Axes, log_rho_h/log_rho_v and survey inputs
-|       |-- M1/                      Formal mesh plus companion parameters
-|       |-- M2/
-|       |-- M3/
-|       |-- M4/
-|       `-- M5/
+|       `-- experiments/mr3d_custem/ mr3d.py, mesh.py, prepare.py
+|-- data/
+|   `-- mesh_data/                   Local/Zenodo input and mesh artifacts
+|       |-- case1_block/
+|       |   |-- cross_validation/
+|       |   |   |-- custem/
+|       |   |   |   |-- parent/meshes/custem_L2/
+|       |   |   |   `-- final/meshes/custem_L2/
+|       |   |   `-- emg3d/meshes/emg3d_fixed/
+|       |   `-- strategy/mesh/       Separate gradient/pole mesh
+|       |-- case2_layered_sphere/
+|       |   |-- inputs/sphere_surface_template.npz
+|       |   |-- candidate_q17_local025/attempt_01/
+|       |   |-- q17_rx_plaza_round_01/
+|       |   `-- q17_rx_plaza_earth_round_02/
+|       `-- case3_mr3d/
+|           |-- prepared/           Original-model metadata, survey, six interfaces
+|           `-- meshes/             M1/ through M5/, each with attempt_01/
 |-- runs/
-|   |-- common/                     Shared loading, sampling and monitoring helpers
+|   |-- common/mesh_inputs.py       Implemented shared mesh-path interface
 |   |-- case1_block/
 |   |   |-- run_cross_validation.py
 |   |   |-- run_gradient.py
@@ -147,41 +166,121 @@ core/
   emitted field. Operators are released on exit. A numerical failure keeps
   its statistics and raises RuntimeError; solve instead returns failed stats.
 
-mesh_data/
-  The block cross-validation and strategy comparisons use different meshes.
-  The sphere display scene is separate from the numerical benchmark mesh.
-  MR3D H5 files store mesh/domain information, not the full VTI material.
-  Keep axes.npz, log_rho_h.npy, log_rho_v.npy and survey inputs with the
-  current loader, or develop and validate an equivalent per-cell material
-  loader before removing those volumes. Original MR3D data may instead be
-  obtained from the cited source when the complete tested preprocessing
-  route is included. A source link alone is insufficient for missing derived
-  inputs that the current runtime expects directly.
-  Document the selected mesh route, companion file names and any final
-  checksums here. Generated electromagnetic fields and benchmark results
-  belong in outputs/runs/, separately from the mesh/model inputs.
+mesh_gen/ and data/mesh_data/
+  mesh_gen/ contains the actual mesh-generation source. All required case
+  inputs and generated mesh files belong under data/mesh_data/. No mesh H5,
+  XML, VTK, TetGen intermediates, package installations or caches belong in
+  the mesh_gen/ source directories. Block cross-validation and strategy
+  comparisons use different meshes. The sphere figure-7 display scene is
+  separate from the numerical benchmark mesh.
 
-  Mesh identity audit, 2026-11-01:
-  - The two block H5 files were directly recounted: 5,256,131 tetrahedra /
-    12,252,168 real P1 DOFs for cross-validation, and 309,349 / 720,052 for
-    strategy comparisons. Their hashes and generator source match the
-    original production archives. Neither tetrahedral generator was rerun.
-  - The emg3d 128 x 128 x 80 arrays were regenerated in memory and exactly
-    match the frozen NPZ, including material arrays and array hashes.
-  - The sphere's three-stage source and production records match 2,519,112
-    tetrahedra / 5,905,442 real DOFs. Its formal H5 was not found locally.
-    Use the recorded q17 quality=1.7 route and both recorded Plaza stages;
-    the old formal_generation_settings.json with quality=1.4 is not the
-    final recipe. No from-zero regeneration has been validated here.
-  - MR3D's five frozen manifests and measured-run protocol match the paper,
-    but the current D-drive generator's adaptive calibration differs from
-    the historical M5 sequence. Do not publish its default invocation as a
-    verified way to recover those five meshes. A fixed-final-scale route
-    is recorded in the audit as a candidate only; it still needs execution
-    and count/topology/material checks. Formal M1-M5 H5 files were not found
-    locally, and old local M1 files do not have the paper's dimensions.
-  Full source hashes, input hashes, evidence paths, production identities,
-  exact scales and verification limits are in MESH_AUDIT_20261101.json.
+  Use the activated numerical environment. From this repository root:
+
+    python -B mesh_gen/generate.py --list
+    python -B mesh_gen/generate.py all --dry-run
+    python -B mesh_gen/generate.py all --check
+    python -B mesh_gen/generate.py all
+
+  The small path/topology regression tests are in tests/test_mesh_generation.py:
+
+    python -B -m pytest -q -p no:cacheprovider tests/test_mesh_generation.py
+
+  Available choices are block_cross, block_emg3d, block_strategy, sphere,
+  mr3d, mr3d_M1 through mr3d_M5, and all. The unified entry supplies the
+  recorded formal parameters; individual historical entry defaults are not
+  a substitute for that formal recipe. Existing validated outputs are reused
+  without overwriting them. --check independently recounts tetrahedral H5
+  topology/unique edges and checks the emg3d arrays; it is not a forward run.
+  The emg3d check also requires and validates receiver_support.npz/json.
+  Its generation entry restores either missing sampling sidecar from the
+  fixed mesh and receiver definitions, while rejecting inconsistent retained
+  data. No separate manually prepared sampling file is needed.
+  --dry-run shows commands without starting the large mesh generation.
+
+  To generate in a separate new data tree, pass an explicit data root:
+
+    python -B mesh_gen/generate.py block_strategy --data-root /tmp/supermor-new-mesh-data
+    python -B mesh_gen/generate.py sphere --data-root /tmp/supermor-new-mesh-data
+
+  The alternate root replaces data/mesh_data, not the repository root. The
+  entry copies missing canonical sphere/MR3D inputs from the default local
+  data root when available. Sphere needs its inputs/sphere_surface_template.npz;
+  MR3D needs prepared/manifest.json, survey.npz and six interfaces/*.xyz.
+  Download/provide those interfaces first when they are absent locally.
+  Data-root overrides and relative package paths replace old D-drive/HPC
+  runtime paths. Old absolute paths retained in copied refinement records
+  are historical provenance only. Migration manifests disclose any rewrites
+  and source adaptations instead of claiming original metadata byte identity.
+
+  Runtime entries should use the same path registry:
+
+    from runs.common.mesh_inputs import get_mesh
+    files = get_mesh('sphere', require=True)
+    mesh_h5 = files['mesh']
+    parameters_json = files['parameters']
+
+  get_mesh accepts block_cross, block_emg3d, block_strategy, sphere, and
+  mr3d_M1 through mr3d_M5. It returns absolute Path values for the required
+  mesh/array files and companion inputs. data_root=PATH selects an alternate
+  tree. The final sphere runtime directory is
+  data/mesh_data/case2_layered_sphere/q17_rx_plaza_earth_round_02/meshes/.
+  Local MR3D regeneration uses attempt_01 names at each fixed final scale;
+  those names do not replace the recorded historical M3/M5 provenance.
+
+  Completed local regeneration and verification, 2026-11-01:
+  - Block cross-validation: 5,256,131 tetrahedra, 6,126,084 unique edges,
+    12,252,168 real P1 DOFs. Strategy mesh: 309,349 tetrahedra, 360,026
+    unique edges, 720,052 real P1 DOFs. Both were generated from scratch;
+    vertex coordinates, connectivity, per-cell regions and complete source/
+    receiver coordinates exactly match the locally available formal meshes.
+  - emg3d: regenerated 128 x 128 x 80 axes/material arrays exactly match
+    the frozen NPZ arrays.
+  - Sphere: quality=1.7 initial mesh plus both recorded Plaza rounds were
+    generated from scratch. Final counts are 2,519,112 tetrahedra, 2,952,721
+    unique edges and 5,905,442 real P1 DOFs. Geometry, regions and all source/
+    receiver checks pass. Its original formal H5 is still unavailable for
+    direct coordinate/connectivity comparison; count agreement and the
+    recorded checks do not establish that stronger identity claim.
+  - MR3D: all five final fixed scales were executed once; independently
+    recounted tetrahedra/edges/real P1 DOFs match the paper for M1-M5.
+    M5 completed meshing, then its conversion was interrupted by SIGTERM;
+    standalone unchanged vtk2xml2h5 converted the retained VTK successfully.
+    No second M5 meshing occurred. Recovery provenance and unknown original
+    Python elapsed time are recorded. The original formal H5 arrays have
+    not been compared, and no full MR3D forward benchmark was rerun here.
+  These validated outputs were copied into this data tree. The source-path
+  migration is recorded separately from the original regeneration. Current
+  evidence is in MESH_VALIDATION.json. MESH_AUDIT_20261101.json is an immutable
+  earlier snapshot whose then-unverified statuses are historical, not the
+  current mesh-generation status.
+
+  Git tracks the small sphere template and MR3D prepared/manifest.json plus
+  survey.npz. Bulk H5 files, six MR3D interface XYZ files and other generated
+  artifacts are local data excluded from Git. They must be included in the
+  separate dataset archive if selected for distribution; a Git source-only
+  clone does not contain them. The dataset DOI/download address has not yet
+  been assigned. Do not treat placeholder archive metadata as a live source.
+
+  File-generation contract:
+  - The sphere template, MR3D prepared/manifest.json, survey.npz and the six
+    interface XYZ files are independent inputs supplied with Git/the dataset.
+  - Mesh H5 files, companion parameters, mesh manifests, sphere source/receiver
+    CSV and geometry/source audits, and emg3d receiver sampling files are
+    generated by the case workflows. Intermediate meshes and refinement
+    mappings are generated too; migration_manifest.json is packaging evidence
+    and is not read by the numerical model.
+
+  MR3D mesh-generation inputs are complete. The H5 files contain mesh/domain
+  information, not the full VTI material required by future forward runs.
+  Those runs still need axes.npz, log_rho_h.npy, log_rho_v.npy and survey data,
+  or a complete tested preprocessing route that regenerates them. These
+  material volumes and the numerical run entries are not part of this mesh
+  migration. Generated EM fields and benchmark results belong in outputs/runs/.
+  The supplied MR3D fetch/prepare commands with --model original can create
+  the material arrays from the public model; generate.py all does not run
+  this preprocessing. The current prepare command expects raw survey and
+  original interface files as well as the two SEG-Y files. fetch downloads
+  that complete raw input set. Future runs must check material inputs too.
 
 runs/
   Keep fixed case parameters in a clearly labelled block at the beginning
@@ -189,7 +288,8 @@ runs/
   definitions, frequencies, FE/BC settings, solver options, pole schedules
   and benchmark sweep values. CLI arguments may override documented options.
   No separate config/ directory is planned. Read mesh companion parameters
-  from mesh_data/ rather than duplicating them in an independent config.
+  from data/mesh_data/ through the shared helper rather than duplicating
+  them in an independent config.
   Resolve all paths relative to this
   package or explicit CLI arguments, not the original /mnt/d or HPC paths.
   Include the shared helpers actually imported by the release entry points.
@@ -221,8 +321,10 @@ FILE_FIGURE_MAP.csv
   The mapping includes all 12 main figures. Numerical tables 3-5 retain
   shared-data references only, without separate table files or export
   scripts. Literature tables 1-2 do not require release entries. Every
-  planned file is marked as planned rather than already copied. Source
-  paths are relative to ../custEM/; release paths are relative to this folder.
+  drawing/run file is marked as planned rather than already copied. Mesh
+  paths now refer to populated data/mesh_data/ directories, while the notes
+  distinguish their migrated generators from the pending plotting entries.
+  Source paths are relative to ../custEM/; release paths are relative to this folder.
   Update the map with tested commands and final output filenames when the
   actual release files have been organized.
 
@@ -293,9 +395,11 @@ supplementary figures/tables are published later, extend the mapping then.
 
 NEXT PACKAGING WORK
 -------------------
-1. Choose final meshes or complete generation workflows for each case.
-2. Populate mesh_data/ and runs/ with the required inputs and case entries;
-   keep them independent of old absolute paths/protocols. core/ is populated.
+1. Package the selected bulk mesh/model data for the separate dataset archive;
+   retain the tested mesh_gen workflows and record the real download/DOI later.
+2. Implement the planned runs/ case entries using runs/common/mesh_inputs.py;
+   complete MR3D forward material inputs/preprocessing and validate the actual
+   numerical case paths. The core and mesh contents are already populated.
 3. Populate figs/ with scripts and drawing inputs. Extract the figure-11
    section renderer; update imports/CLI defaults and avoid duplicated data.
 4. The independent core environment and small numerical checks are recorded
