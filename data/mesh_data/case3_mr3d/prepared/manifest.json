@@ -1,0 +1,77 @@
+{
+  "status": "complete",
+  "model": "original",
+  "model_url": "https://zenodo.org/records/400233",
+  "interfaces_url": "https://zenodo.org/records/400233",
+  "survey_url": "https://raw.githubusercontent.com/swung-research/3d-csem-open-source-landscape/main/model-marlim/marlim_survey.nc",
+  "model_files": [
+    "Horizontal_resistivity.sgy",
+    "Vertical_Resistivity.sgy"
+  ],
+  "cell_widths_m": [
+    25,
+    75,
+    5
+  ],
+  "shape": [
+    1022,
+    371,
+    1229
+  ],
+  "array_order": "x,y,z; all axes ascending",
+  "coordinate_positions": "actual SEG-Y samples",
+  "resistivity_encoding": "log10(ohm m), float32, uncompressed .npy",
+  "translation_m": [
+    -390275.0,
+    -7518065.0,
+    0.0
+  ],
+  "coordinate_scale": "CDP_X and CDP_Y decoded using each trace SourceGroupScalar",
+  "coordinate_spacing_tolerance_m": 0.100001,
+  "z_convention": "positive upwards; negative actual sample depth",
+  "axis_bounds_m": {
+    "x": [
+      -14044.099999999977,
+      11480.0
+    ],
+    "y": [
+      -13875.0,
+      13875.0
+    ],
+    "z": [
+      -6200.0,
+      -60.0
+    ]
+  },
+  "reference_cube_transform": "cube[::-1, :, ::-1].transpose(1, 0, 2)",
+  "trace_order": "validated and mapped by actual CDP_X/CDP_Y headers",
+  "interfaces_coordinates": "original UTM x/y; third column negated",
+  "source_strength": 1.0,
+  "source_length_m": 10.0,
+  "frequencies_hz": [
+    0.125,
+    0.1875,
+    0.25,
+    0.3125,
+    0.375,
+    0.4375,
+    0.5,
+    0.5625,
+    0.625,
+    0.6875,
+    0.75,
+    0.8125,
+    0.875,
+    0.9375,
+    1.0,
+    1.0625,
+    1.125,
+    1.1875,
+    1.25
+  ],
+  "deep_resistivity_ohm_m": {
+    "horizontal": 38,
+    "vertical": 76
+  },
+  "outside_model": "clip x/y to nearest model boundary; use deep resistivity below bottom"
+}
