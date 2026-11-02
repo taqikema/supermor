@@ -1,7 +1,7 @@
-# Candidate optional plotting/data dependencies for the planned paper release.
+# Plotting/data dependencies; tested versions are recorded in ENVIRONMENT.txt.
 # Install the independent core using environment.yml and pyproject.toml first.
 # This is not a lock file or a validated standalone solver environment.
-# Record the tested versions in ENVIRONMENT.txt before publishing.
+# Figure migration reuses cust_env; no installation was performed.
 # Install the matched FEniCS/DOLFIN, MPI, PETSc, petsc4py, mpi4py,
 # HYPRE/AMS, MUMPS and pyGIMLi stack using the environment instructions.
 # Do not replace environment-managed NumPy/h5py with incompatible wheels.
@@ -14,8 +14,7 @@ pyproj
 Pillow
 vtk
 emg3d
-# Needed by the existing MR3D figure-11 SEG-Y loader. If the release
-# exclusively plots a frozen section.npz, it can be omitted from plotting.
+# Required by figure 11, which reads the complete original SEG-Y inputs.
 segyio
 # Core tests are supplied by the specified environment and the test extra.
 pytest

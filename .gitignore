@@ -20,3 +20,15 @@ __pycache__/
 # Independent model arrays and frozen validation responses are data downloads.
 /data/model_data/**
 /data/reference_data/**
+
+# Complete original model volumes are local/downloaded figure inputs.
+/data/raw_data/**
+
+# Figure 7's complete VTK scene is supplied with the separate dataset.
+/data/figure_data/case2_layered_sphere/geometry/
+
+# Renderings and their provenance are regenerated beside figure scripts.
+/figs/case*/fig[0-9][0-9]_*.png
+/figs/case*/fig[0-9][0-9]_*.pdf
+/figs/case*/fig[0-9][0-9]_*.svg
+/figs/case*/fig[0-9][0-9]_*_metadata.json
