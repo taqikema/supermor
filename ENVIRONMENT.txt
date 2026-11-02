@@ -121,3 +121,31 @@ The core has a version/build-pinned platform-specific recipe and verification
 records in CORE_VALIDATION.json.
 The full-case and redraw routes still require their own input recovery,
 execution and resource checks before a complete paper release.
+
+Numerical run migration, 2026-11-02
+---------------------------------
+RUNS_VALIDATION.json records the 172-test full serial check using the already
+existing official-custEM environment, plus five historical P1 kernel tests on
+each of two MPI ranks. No dependency installation was performed for this work.
+The complete 20-frequency block dual-pole case was executed with the existing
+cust_env. Entry scripts loaded core/supermor from this checkout, while external
+custEM resolved to /home/taqikema/projects/custEM/custEM. Inputs were resolved
+under data/ and final results are under outputs/case1_block/strategy/.
+The final IO pass used 66 dynamic columns and had maximum original residual
+8.461863167991031e-7. Receiver accuracy agrees at the paper's reported precision;
+M matrix byte identity with the formal HPC artifact is not established.
+Source identity, reference responses, hashes and exact local performance are
+recorded in RUNS_VALIDATION.json. Other large numerical cases were not run.
+The sphere MPI-only Kg variant extends, rather than changes, the historical
+scope of CORE_VALIDATION.json. Its public current solver defaults are unchanged.
+
+Run entry consolidation, 2026-11-02
+---------------------------------
+After merging the MR3D VTI alias and block DFOM launch wrapper, the complete
+serial suite passed178 tests in7.43s using the same existing official-custEM
+prefix. The six additional checks cover actual PETSc option visibility before
+DFOM startup, unchanged SUPERMOR options, input-only checks without numerical
+imports, formal MPI launch commands, and MPI Abort on uncaught DFOM errors.
+MR3D source hashing also passed with the direct core.materials import.
+No full numerical paper case was rerun for this wrapper-only consolidation.
+RUNS_VALIDATION.json retains the earlier dual-pole numerical record separately.

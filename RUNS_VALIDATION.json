@@ -1,0 +1,204 @@
+{
+  "schema_version": 1,
+  "validated_at": "2026-11-02T10:06:31.016767+08:00",
+  "status": "runs_migrated_and_formal_block_dual_pole_numerically_verified",
+  "tests": {
+    "full_serial": {
+      "passed": 178,
+      "seconds": 7.43,
+      "environment": "Existing official-custEM reconstructed prefix; no installation",
+      "command": "python -B -m pytest -q -p no:cacheprovider tests",
+      "result": "exit0;178 passed",
+      "scope": "125 existing core +15 mesh +27 run-IO +5 historical-kernel +6 consolidated DFOM-entry checks",
+      "log": "/home/taqikema/projects/.custem-git-backups/supermor-runs-cleanup-20261102-_5bxsh7k/cleanup_tests.log",
+      "log_sha256": "0d9c6a770273d2b8779a74c4b0931b4f24bed21b85ac0767cfed2a2f037ecb17"
+    },
+    "legacy_MPI2": {
+      "passed_per_rank": [
+        5,
+        5
+      ],
+      "seconds_per_rank": [
+        0.49,
+        0.46
+      ],
+      "log": "/tmp/supermor_sphere_legacy_mpi2_20261102.log"
+    },
+    "before_consolidation_full_serial": {
+      "passed": 172,
+      "seconds": 7.64,
+      "environment": "Existing official-custEM reconstructed prefix; no installation",
+      "command": "python -B -m pytest -q -p no:cacheprovider tests",
+      "result": "Observed exit0;172 passed",
+      "scope": "125 existing core +15 mesh +27 run-IO +5 historical-kernel checks"
+    }
+  },
+  "formal_dual_pole": {
+    "environment": "Existing WSL cust_env; no package install or environment modification",
+    "command": "python -B runs/case1_block/strategy/run_strategy.py --strategy dual_pole --save-fields --reference data/reference_data/case1_block/strategy/reference/receivers.npz --output outputs/case1_block/strategy/dual_pole_io_final_20261102",
+    "output": "outputs/case1_block/strategy/dual_pole_io_final_20261102/dual_pole",
+    "actual_custem": "/home/taqikema/projects/custEM/custEM/__init__.py",
+    "actual_mor": "/home/taqikema/projects/supermor/core/supermor/mor.py",
+    "checks": {
+      "converged": true,
+      "all20frequencies": true,
+      "tetrahedra": true,
+      "real_dofs": true,
+      "basis_columns": true,
+      "original_residual": true,
+      "E_at_paper_precision": true,
+      "H_at_paper_precision": true
+    },
+    "cells": 309349,
+    "unique_edges": 360026,
+    "real_P1_dofs": 720052,
+    "frequencies": [
+      0.015625,
+      0.03125,
+      0.0625,
+      0.125,
+      0.25,
+      0.5,
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0,
+      32.0,
+      64.0,
+      128.0,
+      256.0,
+      512.0,
+      1024.0,
+      2048.0,
+      4096.0,
+      8192.0
+    ],
+    "dynamic_basis_columns": 66,
+    "max_original_relative_residual": 8.461863167991031e-07,
+    "E_max_pointwise_pct": 0.06306805767017179,
+    "H_max_pointwise_pct": 0.024342164474627725,
+    "local_complete_forward_s": 127.55567729999984,
+    "local_peak_PSS_GiB": 1.7629127502441406,
+    "performance_matches_HPC_not_asserted": true,
+    "numerical_comparison": {
+      "frozen_job": "20466531",
+      "input_hash_matches": {
+        "K": true,
+        "M": false,
+        "q": true,
+        "receivers": true
+      },
+      "responses": {
+        "E": {
+          "global_relative_L2": 5.402366786202049e-09,
+          "max_pointwise_relative": 1.6463665423369264e-07
+        },
+        "H": {
+          "global_relative_L2": 1.2549110850001496e-10,
+          "max_pointwise_relative": 1.9113649219115758e-10
+        }
+      },
+      "mass_matrix_boundary": "M hash differs. Original matrix CSR/binary arrays were not retained locally; storage or numerical cause is not established and elementwise/bitwise M equality is not claimed."
+    },
+    "original_reference_strict_status": "Lowest two reference frequencies do not meet1e-10; original flags retained. All meet equation1e-6.",
+    "sources": {
+      "worker": {
+        "path": "/home/taqikema/projects/supermor/runs/case1_block/strategy/worker.py",
+        "sha256": "85c78366a2f7bf136104f116879979b5cca0f98aabc0a7a79311669b55b8567c"
+      },
+      "mor": {
+        "path": "/home/taqikema/projects/supermor/core/supermor/mor.py",
+        "sha256": "45a7c011c3fc1fee5c13830d2a9c032a1854c7e11e68e8dd4e576c01858a9528"
+      },
+      "operators": {
+        "path": "/home/taqikema/projects/supermor/core/supermor/operators.py",
+        "sha256": "ea6411e7e1fbda87703a798e27cb36ea2076976664429df420e520b14506984e"
+      }
+    },
+    "inputs": {
+      "mesh": {
+        "path": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/meshes/_h5/csem_mor.h5",
+        "sha256": "965592476299f4e41954c1c09b0288cb4d191c038800d6c9cdd0ef124e3ce966"
+      },
+      "parameters": {
+        "path": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/meshes/para/csem_mor_parameters.json",
+        "sha256": "1af98594b51e1c404acf54847ca79ce7dab3806d6660b651c1ed47b3e01ef7f3"
+      },
+      "metadata": {
+        "path": "/home/taqikema/projects/supermor/data/mesh_data/case1_block/strategy/mesh/mesh.json",
+        "sha256": "ebee0e2bae6791d1748670043c64d770b0ce97b56c5fe24fb2a696a29d297f5e"
+      }
+    },
+    "artifacts": {
+      "stats.json": "69f096ae5c7eb50cbbf336adb7e1d4be4f5ce33a7870aa2cbce79cab83c645cd",
+      "receivers.npz": "5941b2350e9db7dc8c168e178f812a5f7dc1749418455fdedada64b27b43ee4f",
+      "frequency_metrics.csv": "06bca219c60f932f376010a8f4eb6f402688aef428bf797fb7f5e44b2f3b4c87",
+      "resources.json": "75dd962fd54f5ab116ea7bd5fab0fd4b7202c1e7e88232ad04b28a68cb0e4e6b",
+      "identity.json": "10f7c959372ac5527a4ac6efb7f3df32ea733c5a37a70c4f9e29a7c387ddc0ec"
+    }
+  },
+  "input_read_only": {
+    "mesh_directory_children": [
+      "_h5",
+      "para"
+    ],
+    "mesh_and_parameter_sha_unchanged": true,
+    "runtime_mesh_view": "outputs/case1_block/strategy/dual_pole_io_final_20261102/dual_pole/runtime_mesh/"
+  },
+  "source_hashes": {
+    "runs/case1_block/cross_validation/custem_worker.py": "f2ba585bf2a7625ddc6d93d41ef1ffb58fdd3af9e29daaac095abecfa46a7175",
+    "runs/case1_block/cross_validation/dfom_sym2_kernel.py": "61ddc0cd905f7df86b49f7fc82e098612533847609cb5f32261af94202355631",
+    "runs/case1_block/cross_validation/emg3d_worker.py": "07055daf7df770e173004c0aaf75aa90faa942841ab6305c18470f4d37429c88",
+    "runs/case1_block/cross_validation/run_cross_validation.py": "476c566420b60916743b2b24fd534bbe6fc25b8196b6d47fe19f8909a4703a19",
+    "runs/case1_block/cross_validation/validation_common.py": "c2ff0390dea8a7e74d7548242ca563ba8f6f994fc7c98901b3c2fb51a3903471",
+    "runs/case1_block/strategy/run_strategy.py": "cd13c19679ffacfa600c4cab534e0843453f0c300706d257a3b6d830cb0c194f",
+    "runs/case1_block/strategy/worker.py": "85c78366a2f7bf136104f116879979b5cca0f98aabc0a7a79311669b55b8567c",
+    "runs/case2_layered_sphere/run_frequency_count.py": "5587f7dd5a10fd1bb418ac3f224a044b031e38228b492990a260c66c35a3027a",
+    "runs/case2_layered_sphere/run_methods_mpi.py": "15e7d8c19ea9175696fe69b930f9c696204ebe547b2ced49adc890a76d856782",
+    "runs/case2_layered_sphere/run_mpi_scaling.py": "8ad4b892d77c4ab352accda3e6e419c55bcb8b0e10bad139e82b6bfaab9f4ddb",
+    "runs/case3_mr3d/mr3d_native.py": "403d9a2736381316f1de69bf48ce07b3d079175e9423228f863e6ce3def4003b",
+    "runs/case3_mr3d/prepare_materials.py": "47cd75c5dd3b458fb787661ce9fcd44b16ca5d71afd6b3cc06445ad2d5f1965c",
+    "runs/case3_mr3d/run_mesh_scaling.py": "edb6d267bf008118117dafe9aaf548345a3ea54772b27fac03d3c77e43ea925e",
+    "runs/case3_mr3d/run_methods_mpi.py": "4f2ce8ec404b44b100bb803ed0a60a5543295325bf2ed51e14df977e49cc2d40",
+    "runs/common/measurement.py": "df80dc72684bfb3e40b3299da3ed92528be2d427932fe1acc80d3d80de8fd796",
+    "runs/common/mesh_inputs.py": "32330c2a49f46332675358b664bc2a99a976275765c990d7a9510edc0a8c795f",
+    "runs/common/receiver_metrics.py": "d1e7dcbe227f3790d24bfc9eafa9ab25afc780be12698ee1549486fb74d2d561",
+    "runs/common/result_io.py": "6a95a75af76346d7dd87dc1e0b4911999005a4f7d51da2d164926e6fab65d4a9"
+  },
+  "limits": [
+    "Only one block dual-pole configuration was executed locally (twice to verify the final IO change).",
+    "Full cross-validation, sphere MPI/frequency and MR3D scans were not run.",
+    "MR3D model_data arrays still require preparation.",
+    "No exact historical timing/memory reproduction is claimed.",
+    "Bitwise equality of assembled M with the original HPC matrix is not established.",
+    "CORE_VALIDATION.json and MESH_VALIDATION.json remain historical records; this file extends their scope."
+  ],
+  "migration_archive": {
+    "directory": "/home/taqikema/projects/.custem-git-backups/supermor-runs-cleanup-20261102-_5bxsh7k",
+    "source_audit": "runs/provenance.json",
+    "sha256": "960642be3c4f71f80aa9903b101fa5c58eba85e1471dfd337249f11dc7b766e8",
+    "snapshot": "Pre-consolidation source audits and validation snapshot, retained outside the checkout; not a runtime input."
+  },
+  "consolidation": {
+    "removed_paths": [
+      "runs/provenance.json",
+      "runs/case3_mr3d/vti.py",
+      "runs/case1_block/cross_validation/dfom_native_entry.py"
+    ],
+    "changes": [
+      "MR3D imports assign_native_vti directly from supermor.materials; materials.py remains in source identity.",
+      "Block DFOM MUMPS controls are applied by custem_worker only for dfom solves; coordinator calls this worker directly.",
+      "Historical audit JSON is archived outside checkout; formal source versions are retained in VERSION.txt."
+    ],
+    "large_cases_rerun": false,
+    "formal_dual_pole_record": "The earlier formal dual-pole validation remains unchanged; its strategy and numerical core files were not modified in this cleanup.",
+    "validated_at": "2026-11-02T10:21:22.107461+08:00",
+    "MR3D_source_identity": {
+      "status": "passed",
+      "source_files": 7,
+      "VTI_function_module": "supermor.materials"
+    },
+    "run_python_files_after": 18
+  }
+}

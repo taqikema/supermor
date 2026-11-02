@@ -11,8 +11,10 @@ CORE_VALIDATION.json records the completed migration checks and their limits.
 Mesh generators are implemented in mesh_gen/. Their necessary inputs and
 previously validated local outputs are organized under data/mesh_data/.
 MESH_VALIDATION.json records the mesh migration checks and verification limits.
-The numerical run entries and figure scripts/data remain planned; runs/common/
-currently provides the shared mesh-path helper only.
+Numerical run entries are implemented in runs/. RUNS_VALIDATION.json records
+the completed local checks and the single formal block dual-pole run. Figure
+scripts/data remain planned. VERSION.txt records the formal numerical
+versions; detailed migration-source audits are archived outside this checkout.
 The complete paper release is not yet assembled. Source-to-paper mapping,
 mesh provenance, dependency notes and the original license are provided.
 This root README is the single usage guide for all directories below.
@@ -35,8 +37,8 @@ Both alternatives are not required. If a runtime still imports validation
 helpers from a mesh generator, retain or extract those helpers before
 omitting the generator itself.
 
-RELEASE TREE (CORE AND MESH CONTENTS POPULATED; RUNS/FIGURES PLANNED)
-------------------------------------------------------------------
+RELEASE TREE (CORE, MESH AND RUNS POPULATED; FIGURES PLANNED)
+-----------------------------------------------------------
 supermor/
 |-- README.txt
 |-- pyproject.toml                   SUPERMOR package/version and upstream pin
@@ -50,6 +52,7 @@ supermor/
 |-- FILE_FIGURE_MAP.csv               Paper item -> source -> proposed release path
 |-- MESH_AUDIT_20261101.json          Immutable earlier provenance audit snapshot
 |-- MESH_VALIDATION.json             Current mesh migration/results and limits
+|-- RUNS_VALIDATION.json             Local run and regression evidence
 |-- core/
 |   `-- supermor/
 |       |-- __init__.py              Independent public API
@@ -58,7 +61,8 @@ supermor/
 |       |-- mor.py                   RK/SUPERMOR numerical kernels
 |       |-- operators.py             P1/P2 assembly, line source, E/H sampling
 |       |-- materials.py             Native distributed DG0 VTI assignment
-|       `-- mor_high_order.py        P2 exact-sequence/AMS transfers
+|       |-- mor_high_order.py        P2 exact-sequence/AMS transfers
+|       `-- mor_mpi_legacy.py        P1 historical sphere-MPI Kg MR variant
 |-- tests/                           Algebra, P1/P2, official H5 and A/B checks
 |-- mesh_gen/
 |   |-- generate.py                  Unified mesh generation/check entry
@@ -73,6 +77,8 @@ supermor/
 |   `-- case3_mr3d/
 |       `-- experiments/mr3d_custem/ mr3d.py, mesh.py, prepare.py
 |-- data/
+|   |-- model_data/                  Prepared physical model arrays (local/Zenodo)
+|   |-- reference_data/              Frozen numerical validation responses
 |   `-- mesh_data/                   Local/Zenodo input and mesh artifacts
 |       |-- case1_block/
 |       |   |-- cross_validation/
@@ -90,15 +96,18 @@ supermor/
 |           |-- prepared/           Original-model metadata, survey, six interfaces
 |           `-- meshes/             M1/ through M5/, each with attempt_01/
 |-- runs/
-|   |-- common/mesh_inputs.py       Implemented shared mesh-path interface
+|   |-- common/                     Mesh paths, PSS, result IO, receiver metrics
 |   |-- case1_block/
-|   |   |-- run_cross_validation.py
-|   |   |-- run_gradient.py
-|   |   `-- run_poles.py
+|   |   |-- cross_validation/        run_cross_validation.py and four workers/helpers
+|   |   `-- strategy/                run_strategy.py and worker.py
 |   |-- case2_layered_sphere/
+|   |   |-- run_methods_mpi.py
 |   |   |-- run_mpi_scaling.py
 |   |   `-- run_frequency_count.py
 |   `-- case3_mr3d/
+|       |-- prepare_materials.py
+|       |-- mr3d_native.py
+|       |-- run_methods_mpi.py
 |       `-- run_mesh_scaling.py
 |-- figs/
 |   |-- plot_all.py                  Proposed unified redraw entry
@@ -128,13 +137,17 @@ supermor/
 |           |-- section/            Fig. 11: frozen section arrays or source inputs
 |           `-- scaling/            Fig. 12, Tables 4-5: current performance.csv
 `-- outputs/                         Generated locally; not bundled input data
-    |-- runs/
+    |-- case1_block/
+    |-- case2_layered_sphere/
+    |-- case3_mr3d/
     `-- figures/
 
 RELEASE CONTENT NOTES
 ---------------------
 core/
-  Seven Python files provide the paper extension. No custEM source tree,
+  Seven shared Python modules provide the paper extension. A separate
+  mor_mpi_legacy.py preserves the three historical P1 Kg MR definitions for
+  the sphere MPI experiment. No custEM source tree,
   upstream VERSION.rst, modified MOD/Solver classes, examples or binaries
   are bundled. Official custEM commit
   be0ef8729761a7eae32ababc8b362514d84f5f0a is an external dependency.
@@ -408,3 +421,88 @@ NEXT PACKAGING WORK
 5. Verify the map, input availability and redraws. Archive the release source
    and dataset with matching version information. Files ignored by Git are
    not automatically included in a source-only release.
+
+NUMERICAL RUNS
+--------------
+Inputs resolve relative to this checkout, independent of the working directory.
+For runs, --data-root replaces the complete data/ directory; the mesh generator's
+--data-root instead replaces data/mesh_data/. get_case_mesh() makes this
+separation explicit. Generated H5 and companion parameters are consumed together.
+Other model inputs live under data/model_data/. Existing reference responses
+can be supplied under data/reference_data/; they are optional when computing
+new reference responses locally. New results, native custEM files, logs and
+sampled aggregate job PSS belong under outputs/. Each coordinator creates a
+new run directory and rejects overwriting completed results. Input data is
+read through a file-symlink view in outputs/runtime_mesh because upstream
+custEM otherwise creates auxiliary directories beside its input mesh.
+
+Activate the numerical environment and use one thread per MPI rank. All
+entry scripts load this checkout's core/supermor, not an older installed
+supermor package. custEM remains an external model/mesh dependency. The
+recorded local block test reuses the existing WSL cust_env without installing
+or modifying packages. Its custEM import resolves to the external research
+checkout; the independent package's official-dependency regression checks
+use the already existing reconstructed environment, recorded separately.
+No environment or installed package is copied into this repository.
+
+Block strategy (single dual-pole configuration, 20 frequencies):
+
+  python -B runs/case1_block/strategy/run_strategy.py --strategy dual_pole --save-fields --compute-reference
+
+The separate independent UFL/MUMPS reference is computed only when requested.
+If a frozen same-input reference is available, use --reference PATH/receivers.npz
+instead of --compute-reference. --strategy all launches the five comparison
+configurations; --strategy single_pole selects the single-pole comparison.
+--dry-run and worker.py --check-inputs inspect settings/files without a solve.
+Published max-pointwise E/H errors use each receiver's three complex components,
+then the maximum across receivers; whole-array L2 is a separate saved metric.
+
+Other HPC entries (use --help for method, mesh and launcher overrides):
+
+  python -B runs/case1_block/cross_validation/run_cross_validation.py --dry-run
+  python -B runs/case2_layered_sphere/run_mpi_scaling.py --dry-run
+  python -B runs/case2_layered_sphere/run_frequency_count.py --dry-run
+  python -B runs/case3_mr3d/run_mesh_scaling.py --dry-run
+
+MPI sphere SUPERMOR defaults to --kernel paper_mpi: the historical Kg residual
+QR/MR variant from commit 86c71ea. Frequency-count SUPERMOR uses current core,
+matching its no-Kg method definition. Only P1 is supported by the historical
+variant. Current DFOM/IFOM/RK share the existing production implementations.
+The old DFOM1 measurement remains historical provenance, not a performance
+value that a new execution can guarantee. No full sphere scan was rerun here.
+
+MR3D needs model_data/case3_mr3d/manifest.json, axes.npz, log_rho_h.npy and
+log_rho_v.npy in addition to its generated meshes and survey. These material
+arrays are not yet present in this checkout. They are prepared from the two
+original SEG-Y volumes, independently of mesh generation:
+
+  python -B runs/case3_mr3d/prepare_materials.py --check
+  python -B runs/case3_mr3d/prepare_materials.py --raw-dir /path/to/original-SGYs
+
+--fetch explicitly downloads the two original volumes when desired. Geometry,
+survey and the six interface inputs are retained separately in mesh_data.
+No MR3D material preparation or full forward calculation was run during this
+migration. Its default scan is the paper's 17 configurations / 37 runs,
+with three SUPERMOR/IFOM repeats and single RK/DFOM measurements. DFOM M3-M5
+require an explicit opt-in. The three historical measurement batches are
+recorded, while the portable monitor identifies itself as a new implementation.
+Timing uses the worker's complete-forward maximum-rank wall time; memory uses
+sampled aggregate job PSS excluding the monitor. Rerun performance is separate
+from the published values. The final clean RK M5 and DFOM M2 historical raw
+measurement files are still unavailable locally.
+
+No nested README or per-case config directory is required. Formal parameters
+are fixed explicitly in the run entries. Receiver arrays, residuals and runtime
+identities are saved with each result. Drawing scripts remain a separate step.
+
+Run entry consolidation, 2026-11-02
+---------------------------------
+MR3D imports native VTI assignment directly from core/supermor/materials.py.
+The block DFOM worker now applies its formal MUMPS controls itself; no separate
+DFOM launch wrapper is needed. The three controls retain their original prefix
+and values: hed_dfom_sym2_mat_mumps_icntl_4=2, icntl_10=0, icntl_22=0.
+The frequency-count and MPI-scaling entries remain separate user commands.
+The migration-source audit was moved outside the checkout; runtime scripts do
+not depend on an audit JSON. VERSION.txt retains the formal source versions,
+and RUNS_VALIDATION.json separates the earlier numerical run from later code
+consolidation checks. The consolidation does not rerun the large paper cases.

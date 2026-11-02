@@ -1,13 +1,28 @@
-Status: independent core and mesh-generation migration; runs/figures still pending.
+Status: independent core, mesh and numerical-run migration; figure content pending.
 Package version: defined only in pyproject.toml.
 Research source commit: 016d934cd4ae7411db5e579cb11ba22bce2ac296
 Official custEM dependency commit: be0ef8729761a7eae32ababc8b362514d84f5f0a
 Prepared on: 2026-11-01 (Asia/Shanghai)
 Release version/tag and archive DOI: not assigned.
-Contents: independent P1 four-method/P2 extension; no bundled custEM sources.
+Contents: independent P1 four-method/P2 extension plus P1 historical sphere-MPI variant; no bundled custEM sources.
 Validation: exact completed results and source hashes in CORE_VALIDATION.json.
 Mesh layout: generators in mesh_gen/; inputs and outputs in data/mesh_data/.
 Mesh migration and current input/output checks: MESH_VALIDATION.json.
 The original source snapshot and old numerical baselines were saved outside
 this repository before migration. Numerical defaults and PETSc prefixes are
 preserved; official custEM and the reference environment remain unmodified.
+Runs: formal source versions below; runtime IO and block dual-pole check in RUNS_VALIDATION.json.
+
+Formal run source versions (preserved after launch-wrapper consolidation)
+Sphere MPI SUPERMOR: 86c71eafa94204a6fc69a7a6b0bd829e009ac7fa;
+  core/supermor/mor_mpi_legacy.py retains the P1 Kg MR definitions.
+Sphere frequency-count SUPERMOR: 84ba36e7149b156cc69dd39fce2595c7b42d6da3;
+  current core retains its no-Kg definition.
+MR3D protocol/source batches: 32c8acc04932fe6274c8d7322a6d9325f2dfd55f,
+  634fb4b909d7c204ebcb74e0559bfb569507611a,
+  4dcab2d10cb3eb297867f9f54ea71e2729eedaac.
+MR3D numerical worker SHA-256 across these batches:
+  928ba78b80f0aa11e2826c3d58f6b64deefb80d720afd6831c92bf3b024be2e3.
+Portable measurement profiles: batch_r03, fat09, later; the portable monitor
+  does not claim byte identity or identical performance with historical monitors.
+Detailed original-file/migration hash audit: archived outside this checkout.
