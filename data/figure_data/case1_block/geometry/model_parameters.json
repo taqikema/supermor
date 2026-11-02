@@ -1,0 +1,79 @@
+{
+  "physical": {
+    "conductivity_S_per_m": {
+      "air": 1e-08,
+      "background": 0.01,
+      "block": 1.0
+    },
+    "block_bounds_m": [
+      [
+        1300.0,
+        3500.0
+      ],
+      [
+        -500.0,
+        500.0
+      ],
+      [
+        -700.0,
+        -300.0
+      ]
+    ],
+    "source": {
+      "kind": "finite_wire",
+      "start_m": [
+        -2500.0,
+        0.0,
+        0.0
+      ],
+      "end_m": [
+        -2000.0,
+        0.0,
+        0.0
+      ],
+      "current_A": 1.0
+    },
+    "mu_H_per_m": 1.2566370614359173e-06,
+    "time_convention": "+iwt",
+    "domain_bounds_m": [
+      [
+        -100000.0,
+        100000.0
+      ],
+      [
+        -100000.0,
+        100000.0
+      ],
+      [
+        -100000.0,
+        100000.0
+      ]
+    ]
+  },
+  "sampling": {
+    "shape_xy": [
+      81,
+      41
+    ],
+    "receiver_count": 3321,
+    "spacing_m": 50.0,
+    "x_range_m": [
+      1000.0,
+      5000.0
+    ],
+    "y_range_m": [
+      -1000.0,
+      1000.0
+    ],
+    "z_m": -1.0,
+    "highlighted_line": null
+  },
+  "panels": [
+    "xy plan view",
+    "xz section at y=0 m"
+  ],
+  "local_view": true,
+  "depth_exaggerated": false,
+  "source_script_sha256": "97fe0b1f0532d2728b1b0605b1826f1b9be71cd4dfcafe160ebd8255cae1476b",
+  "physical_contract_source_sha256": "d9d9195df1cdad4ca7ef3ca79181d8ced2ad1e68e8a4f41fa0c06dda41515a4f"
+}
