@@ -16,3 +16,7 @@ __pycache__/
 !/data/mesh_data/case2_layered_sphere/inputs/sphere_surface_template.npz
 !/data/mesh_data/case3_mr3d/prepared/manifest.json
 !/data/mesh_data/case3_mr3d/prepared/survey.npz
+
+# Independent model arrays and frozen validation responses are data downloads.
+/data/model_data/**
+/data/reference_data/**
