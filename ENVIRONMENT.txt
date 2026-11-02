@@ -48,7 +48,7 @@ The YAML specifies versions/builds, not artifact checksums.
 
 Rebuild and validation
 ----------------------
-Run the installation and test commands in the root README.txt. Activate the new
+Run the installation and test commands in the root README.md. Activate the new
 Conda environment (or use conda run); invoking its Python alone does not set
 the pkg-config/compiler paths required by DOLFIN JIT. Use one BLAS/OpenMP
 thread per MPI rank for the recorded tests. Keep PYTHONPATH free of old
